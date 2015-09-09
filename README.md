@@ -5,11 +5,11 @@
 <b>Person</b>
 <table>
   <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Null</td>
-    <td>Default</td>
-    <td>Extra</td>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Default</th>
+    <th>Extra</th>
   </tr>
   <tr>
     <td>id</td>
@@ -107,11 +107,11 @@
 <b>Students</b>
 <table>
   <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Null</td>
-    <td>Default</td>
-    <td>Extra</td>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Default</th>
+    <th>Extra</th>
   </tr>
   <tr>
     <td>id</td>
@@ -139,11 +139,11 @@
 <b>Servant</b>
 <table>
   <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Null</td>
-    <td>Default</td>
-    <td>Extra</td>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Default</th>
+    <th>Extra</th>
   </tr>
   <tr>
     <td>id</td>
@@ -157,7 +157,6 @@
     <td>int(11)</td>
     <td>Yes</td>
     <td>Null</td>
-    <td>Conrinator ID</td>
     <td>Cordinator ID. Null if cordinator</td>
   <tr>
 </table>
@@ -165,11 +164,11 @@
 <b>Class</b>
 <table>
   <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Null</td>
-    <td>Default</td>
-    <td>Extra</td>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Default</th>
+    <th>Extra</th>
   </tr>
   <tr>
     <td>id</td>
@@ -211,11 +210,11 @@
 <b>Served</b>
 <table>
   <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Null</td>
-    <td>Default</td>
-    <td>Extra</td>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Default</th>
+    <th>Extra</th>
   </tr>
   <tr>
     <td>stdntid</td>
@@ -236,11 +235,11 @@
 <b>Serves</b>
 <table>
   <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Null</td>
-    <td>Default</td>
-    <td>Extra</td>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Default</th>
+    <th>Extra</th>
   </tr>
   <tr>
     <td>srvntid</td>
@@ -261,11 +260,11 @@
 <b>Attended</b>
 <table>
   <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Null</td>
-    <td>Default</td>
-    <td>Extra</td>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Default</th>
+    <th>Extra</th>
   </tr>
   <tr>
     <td>stdntid</td>
@@ -300,11 +299,11 @@
 <b>Outreached</b>
 <table>
   <tr>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Null</td>
-    <td>Default</td>
-    <td>Extra</td>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Default</th>
+    <th>Extra</th>
   </tr>
   <tr>
     <td>stdntid</td>
