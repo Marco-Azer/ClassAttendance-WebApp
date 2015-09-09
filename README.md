@@ -1,0 +1,197 @@
+<h1>SundaySchool</h1>
+
+<h2>Database Stuct:</h2>
+
+<b>Person</b>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Null</td>
+    <td>Default</td>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>int(11)</td>
+    <td>
+  </tr>
+  <tr>
+    <td>fname</td>
+    <td>varchar(30)</td>
+  </tr>
+  <tr>
+    <td>lname</td>
+    <td>varchar(30)</td>
+  </tr>
+  <tr>
+    <td>mname</td>
+    <td>varchar(30)</td>
+    <td>Null</td>
+  </tr>
+  <tr>
+    <td>gender</td>
+    <td>char(1)</td>
+  </tr>
+  <tr>
+    <td>age</td>
+    <td>int(3)</td>
+  </tr>
+  <tr>
+    <td>dob</td>
+    <td>int(2)</td>
+  </tr>
+  <tr>
+    <td>mob</td>
+    <td>int(2)</td>
+  </tr>
+  <tr>
+    <td>yob</td>
+    <td>int(4)</td>
+  </tr>
+  <tr>
+    <td>phone</td>
+    <td>varchar(15)</td>
+  </tr>
+  <tr>
+    <td>aptnum</td>
+    <td>varchar(5)</td>
+  </tr>
+  <tr>
+    <td>streetname</td>
+    <td>text</td>
+  </tr>
+  <tr>
+    <td>pcode</td>
+    <td>varchar(10)</td>
+  </tr>
+</table>
+
+<b>Students</b>
+<table>
+  <tr>
+    <td>id</td>
+    <td>int(11)</td>
+  </tr>
+  <tr>
+    <td>pname</td>
+    <td>varchar(30)</td>
+  </tr>
+  <tr>
+    <td>emergcontact</td>
+    <td>varchar(15)</td>
+  </tr>
+</table>
+
+<b>Servant</b>
+<table>
+  <tr>
+    <td>id</td>
+    <td>int(11)</td>
+  </tr>
+  <tr>
+    <td>crdid</td>
+    <td>int(11)</td>
+    <td>Null</td>
+    <td>Conrinator ID</td>
+  <tr>
+</table>
+
+<b>Class</b>
+<table>
+  <tr>
+    <td>id</td>
+    <td>int(11)</td>
+  </tr>
+  <tr>
+    <td>cname</td>
+    <td>varchar(30)</td>
+  </tr>
+  <tr>
+    <td>grade</td>
+    <td>int(2)</td>
+  </tr>
+  <tr>
+    <td>numofstdns</td>
+    <td>int(3)</td>
+  </tr>
+  <tr>
+    <td>numofsrvnts</td>
+    <td>int(3)</td>
+  </tr>
+</table>
+
+<b>Served</b>
+<table>
+  <tr>
+    <td>stdntid</td>
+    <td>int(11)</td>
+  </tr>
+  <tr>
+    <td>classid</td>
+    <td>int(11)</td>
+  </tr>
+</table>
+
+<b>Serves</b>
+<table>
+  <tr>
+    <td>srvntid</td>
+    <td>int(11)</td>
+  </tr>
+  <tr>
+    <td>classid></td>
+    <td>int(11)</td>
+  </tr>
+</table>
+
+<b>Attended</b>
+<table>
+  <tr>
+    <td>stdntid</td>
+    <td>int(11)</td>
+  </tr>
+  <tr>
+    <td>day</td>
+    <td>int(2)</td>
+  </tr>
+  <tr>
+    <td>month</td>
+    <td>int(2)</td>
+  </tr>
+  <tr>
+    <td>year</td>
+    <td>int(2)</td>
+  </tr>
+</table>
+
+<b>Outreached</b>
+<table>
+  <tr>
+    <td>stdntid</td>
+    <td>int(11)</td>
+  </tr>
+  <tr>
+    <td>day</td>
+    <td>int(2)</td>
+  </tr>
+  <tr>
+    <td>month</td>
+    <td>int(2)</td>
+  </tr>
+  <tr>
+    <td>year</td>
+    <td>int(4)</td>
+  </tr>
+  <tr>
+    <td>serv1</td>
+    <td>varchar(30)</td>
+  </tr>
+  <tr>
+    <td>serv2</td>
+    <td>varchar(30)</td>
+  </tr>
+  <tr>
+    <td>serv3</td>
+    <td>varchar(30)</td>
+  </tr>
+</table>
