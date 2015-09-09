@@ -69,6 +69,12 @@
 <b>Students</b>
 <table>
   <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Null</td>
+    <td>Default</td>
+  </tr>
+  <tr>
     <td>id</td>
     <td>int(11)</td>
   </tr>
@@ -85,6 +91,12 @@
 <b>Servant</b>
 <table>
   <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Null</td>
+    <td>Default</td>
+  </tr>
+  <tr>
     <td>id</td>
     <td>int(11)</td>
   </tr>
@@ -98,6 +110,12 @@
 
 <b>Class</b>
 <table>
+  <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Null</td>
+    <td>Default</td>
+  </tr>
   <tr>
     <td>id</td>
     <td>int(11)</td>
@@ -123,6 +141,12 @@
 <b>Served</b>
 <table>
   <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Null</td>
+    <td>Default</td>
+  </tr>
+  <tr>
     <td>stdntid</td>
     <td>int(11)</td>
   </tr>
@@ -135,6 +159,12 @@
 <b>Serves</b>
 <table>
   <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Null</td>
+    <td>Default</td>
+  </tr>
+  <tr>
     <td>srvntid</td>
     <td>int(11)</td>
   </tr>
@@ -146,6 +176,12 @@
 
 <b>Attended</b>
 <table>
+  <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Null</td>
+    <td>Default</td>
+  </tr>
   <tr>
     <td>stdntid</td>
     <td>int(11)</td>
@@ -166,6 +202,12 @@
 
 <b>Outreached</b>
 <table>
+  <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Null</td>
+    <td>Default</td>
+  </tr>
   <tr>
     <td>stdntid</td>
     <td>int(11)</td>
