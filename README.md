@@ -104,7 +104,7 @@
   </tr>
 </table>
 
-<b>Students</b>
+<b>Student</b>
 <table>
   <tr>
     <th>Name</th>
