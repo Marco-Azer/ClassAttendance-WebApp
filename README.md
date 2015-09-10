@@ -186,7 +186,7 @@
   </tr>
   <tr>
     <td>grade</td>
-    <td>int(2)</td>
+    <td>char(2)</td>
     <td>No</td>
     <td>None</td>
     <td>Class Grade</td>
