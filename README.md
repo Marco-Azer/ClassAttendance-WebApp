@@ -207,7 +207,7 @@
   </tr>
 </table>
 
-<b>Served</b>
+<b>Attend</b>
 <table>
   <tr>
     <th>Name</th>
@@ -232,7 +232,7 @@
   </tr>
 </table>
 
-<b>Serves</b>
+<b>Serve</b>
 <table>
   <tr>
     <th>Name</th>
@@ -257,7 +257,7 @@
   </tr>
 </table>
 
-<b>Attended</b>
+<b>Attendance</b>
 <table>
   <tr>
     <th>Name</th>
