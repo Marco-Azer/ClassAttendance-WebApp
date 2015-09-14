@@ -151,3 +151,91 @@ var SetClass = function(db, id, cid, callback){
             callback(data);
         });
 }
+
+// /srvnt?fname=value1&lname=value2&dob=value3
+var GetServant = function(db, req){
+    var fname = req.param('fname');
+    var lname = req.param('lname');
+    var dob = req.param('dob');
+
+    var cursor = db.collection(collec).find({
+        "fname": fname,
+        "lname": lname,
+        "dob": dob
+    });
+
+    return cursor;
+}
+
+// /srvntgndr?gender=value1
+var GetServantByGender = function(db, req){
+    var gender = req.param('gender');
+
+    var cursor = db.collection(collec).find({
+        "gender": gender
+    }).sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}
+
+// /srvntbyclass
+var GetServantByClass = function(db, req){
+    var cid = req.param('cid');
+
+    var cursor = db.collection(collec).find({
+        "curClassId": cid
+    }).sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}
+
+var GetServantByGrade = function(db, req){
+    var grade = req.param('grade');
+
+    var cursor = db.collection(collec).find({
+        "grade": grade
+    }).sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}
+
+var GetServantByAge = function(db, req){
+    var age = req.param('age');
+
+    var cursor = db.collection(collec).find({
+        "age": age
+    }).sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}
+
+var GetServantByAttendance = function(db, req){
+    var year = req.param('year');
+    var month = req.param('month');
+    var day = req.param('day');
+
+    var cursor;
+
+    if(day === undefined){
+        cursor = db.collection(collec).find({
+            "attendance.year": year,
+            "attendance.month": month,
+            "outreach.day": day
+        });
+    }
+    else if(month === undefined){
+        cursor = db.collection(collec).find({
+            "attendance.year": year,
+            "attendance.month": month
+        });
+    }
+    else{
+        cursor = db.collection(collec).find({
+            "attendance.year": year;
+        });
+    }
+
+    cursor.sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}

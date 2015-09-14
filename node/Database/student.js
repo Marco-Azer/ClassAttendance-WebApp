@@ -207,3 +207,115 @@ var SetClass = function(db, id, cid, callback){
             callback(data);
         });
 }
+
+// /stdnt?fname=value1&lname=value2&dob=value3
+var GetStudent = function(db, req){
+    var fname = req.param('fname');
+    var lname = req.param('lname');
+    var dob = req.param('dob');
+
+    var cursor = db.collection(collec).find({
+        "fname": fname,
+        "lname": lname,
+        "dob": dob
+    });
+
+    return cursor;
+}
+
+// /stdnt/cls/cid
+var GetStudentByClass = function(db, req){
+    var cid = req.param('cid');
+
+    var cursor = db.collection(collec).find({
+        "curClassId": cid
+    }).sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}
+
+// /stdnt/age/age
+var GetStudentByAge = function(db, req){
+    var age = req.param('age');
+
+    var cursor = db.collection(collec).find({
+        "age": age
+    }).sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}
+
+// /stdnt/grade/grade
+var GetStudentByGrade = function(db, req){
+    var grade = req.param('grade');
+
+    var cursor = db.collection(collec).find({
+        "grade": grade
+    }).sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}
+
+// /stdnt/attnd?year=value1&month=value2&day=value3
+var GetStudentByAttendance = function(db, req){
+    var year = req.param('year');
+    var month = req.param('month');
+    var day = req.param('day');
+
+    var cursor;
+
+    if(day === undefined){
+        cursor = db.collection(collec).find({
+            "attendance.year": year,
+            "attendance.month": month,
+            "outreach.day": day
+        });
+    }
+    else if(month === undefined){
+        cursor = db.collection(collec).find({
+            "attendance.year": year,
+            "attendance.month": month
+        });
+    }
+    else{
+        cursor = db.collection(collec).find({
+            "attendance.year": year
+        });
+    }
+
+    cursor.sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}
+
+// /stdnt/outrch?year=value1&month=value2&day=value3
+var GetStudentByoutreach = function(db, req){
+    var year = req.param('year');
+    var month = req.param('month');
+    var day = req.param('day');
+
+    var cursor;
+
+    if(day === undefined){
+        cursor = db.collection(collec).find({
+            "outreach.year": year,
+            "outreach.month": month,
+            "outreach.day": day
+        });
+    }
+    else if(month === undefined){
+        cursor = db.collection(collec).find({
+            "outreach.year": year,
+            "outreach.month": month
+        });
+    }
+    else{
+        cursor = db.collection(collec).find({
+            "outreach.year": year
+        });
+    }
+
+    cursor.sort({"fname": 1, "lname": 1});
+
+    return cursor;
+}
