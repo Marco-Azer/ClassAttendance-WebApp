@@ -1,0 +1,147 @@
+Students
+[
+    {                        
+            "fname": "Marco",                 
+            "lname": "Azer",                 
+            "mname": "Nader",                
+            "gender" : "Male",                     
+            "age": "21",                        
+            "grade": "7",                     
+            "dob": {
+                "year": "1994",
+                "month": "August",
+                "day": "7"   
+            },              
+            "phone": "2266060240",               
+            "emergNum": "6477780678",  
+            "emergName": "Nader Awadalla",    
+            "addr": {
+                "aptNum": "5485",
+                "street": "Longford Drive",
+                "city": "Mississauga",
+                "province": "ON",
+                "country": "Canada",
+                "pcode": "L5M6N3"
+            },                         
+            "curClassId": "",           
+            "attendance": [{
+                "year": "2015",
+                "month": "September",
+                "day": "15"
+            }, {
+                "year": "2014",
+                "month": "August",
+                "day": "14"
+            }],             
+            "outreach": [{
+                "year": "2015",
+                "month": "September",
+                "day": "15"
+            }]           
+    },
+    {                        
+            "fname": "Marina",                 
+            "lname": "Azer",                 
+            "mname": "Nader",                
+            "gender" : "Female",                     
+            "age": "17",                        
+            "grade": "12",                     
+            "dob": {
+                "year": "1998",
+                "month": "June",
+                "day": "14"   
+            },              
+            "phone": "6471231234",               
+            "emergNum": "6477780678",  
+            "emergName": "Nader Awadalla",    
+            "addr": {
+                "aptNum": "5485",
+                "street": "Longford Drive",
+                "city": "Mississauga",
+                "province": "ON",
+                "country": "Canada",
+                "pcode": "L5M6N3"
+            },                         
+            "curClassId": "1",           
+            "attendance": [{
+                "year": "2014",
+                "month": "September",
+                "day": "15"
+            }, {
+                "year": "2014",
+                "month": "August",
+                "day": "14"
+            }],             
+            "outreach": [{
+                "year": "2015",
+                "month": "October",
+                "day": "15"
+            }]           
+    },{                        
+            "fname": "Nader",                 
+            "lname": "Awadalla",                 
+            "mname": "Awadalla",                
+            "gender" : "Male",                     
+            "age": "47",                        
+            "grade": "12",                     
+            "dob": {
+                "Year": "1967",
+                "Month": "April",
+                "Day": "1"   
+            },              
+            "phone": "6477780678",               
+            "emergNum": "",  
+            "emergName": "",    
+            "addr": {},                         
+            "curClassId": "",           
+            "attendance": [],             
+            "outreach": []           
+    }
+]
+
+Servants[
+    {
+        "fname": "Marco",
+        "lname": "Azer",
+        "mname": "Nader",
+        "gender": "Male",
+        "age": "21",
+        "dob": {
+                "year": "1994",
+                "month": "August",
+                "day": "7"   
+            },
+        "phone": "2266060240",
+        "curClassId": "1",
+        "grade": "7",
+        "attendance": [{
+                "year": "2015",
+                "month": "October",
+                "day": "15"
+            }]
+    },
+    {
+        "fname": "Nader",
+        "lname": "Awadalla",
+        "mname": "Awadalla",
+        "gender": "Male",
+        "age": "48",
+        "dob": {
+                "year": "1967",
+                "month": "August",
+                "day": "7"   
+            },
+        "phone": "2266060240",
+        "curClassId": "1",
+        "grade": "7",
+        "attendance": [{
+                "year": "2015",
+                "month": "October",
+                "day": "15"
+            },{
+                "year": "2015",
+                "month": "September",
+                "day": "14"
+            }]
+    }
+]

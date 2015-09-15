@@ -20,222 +20,227 @@
 */
 
 var collec = 'servant';
+var assert = require('assert');
 
+module.exports = {
 // Inserts
-var InsertServant = function(db, srvnt, callback){
-	db.collection(collec).insertOne(srvnt, function(err, data){
-		assert.equal(null, err);
-		console.log("Servant was inserted properly");
-		callback(data);
-	});
-}
+    InsertServant : function(db, srvnt, callback){
+    	db.collection(collec).insertOne(srvnt, function(err, data){
+    		assert.equal(null, err);
+    		console.log("Servant was inserted properly");
+    		//callback(data);
+    	});
+    },
 
-var InsertServants = function(db, srvnts, callback){
-	db.collection(collec).insert(srvnts, function(err, data){
-		assert.equal(null, err);
-		console.log("Servants were inserted properly");
-		callback(data);
-	});
-}
+    InsertServants : function(db, srvnts, callback){
+    	db.collection(collec).insert(srvnts, function(err, data){
+    		assert.equal(null, err);
+    		console.log("Servants were inserted properly");
+    		callback(data);
+    	});
+    },
 
-var InsertMname = function(db, id, mname, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {"mname": mname},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("Middle Name was inserted properly");
-            callback(data);
+    SetMname : function(db, id, mname, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {"mname": mname},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Middle Name was inserted properly");
+                callback(data);
+            });
+    },
+
+    SetAge : function(db, id, age, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {"age": age},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Age was inserted properly");
+                callback(data);
+            });
+    },
+
+    SetPhone : function(db, id, phone, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {"phone": phone},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Phone was inserted properly");
+                callback(data);
+            });
+    },
+
+    InsertAttendance : function(db, id, date, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {$push: {"attendance": date}},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Attendance date was inserted properly");
+                callback(data);
+            }
+        );
+    },
+
+    // Updates
+    SetFname : function(db, id, fname, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {"fname": fname},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("First Name was set properly");
+                callback(data);
+            });
+    },
+
+    SetLname : function(db, id, Lname, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {"lname": Lname},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Last Name was set properly");
+                callback(data);
+            });
+    },
+
+    SetGender : function(db, id, gender, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {"gender": gender},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Gender was set properly");
+                callback(data);
+            });
+    },
+
+
+    SetDob : function(db, id, dob, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {"dob": dob},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Day of birth was set properly");
+                callback(data);
+            });
+    },
+
+
+    SetGrade : function(db, id, grade, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {"grade": grade},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Grade was set properly");
+                callback(data);
+            });
+    },
+
+    SetClass : function(db, id, cid, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {"curClassId": cid},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Class was set properly");
+                callback(data);
+            });
+    },
+
+    // /srvnt?fname=value1&lname=value2&dob=value3
+    GetServant : function(db, req){
+        var fname = req.param('fname');
+        var lname = req.param('lname');
+        var year = req.param('year');
+        var month = req.param('month');
+        var day = req.param('day');
+
+        var cursor = db.collection(collec).find({
+            "fname": fname,
+            "lname": lname,
+            "dob":{"year": year, "month": month, "day": day}
         });
-}
 
-var InsertAge = function(db, id, age, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {"age": age},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("Age was inserted properly");
-            callback(data);
-        });
-}
+        return cursor;
+    },
 
-var InsertPhone = function(db, id, phone, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {"phone": phone},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("Phone was inserted properly");
-            callback(data);
-        });
-}
+    // /srvntgndr?gender=value1
+    GetServantByGender : function(db, req){
+        var gender = req.param('gender');
 
-var InsertAttendance = function(db, id, date, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {$push: {"attendance": date}},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("Attendance date was inserted properly");
-            callback(data);
+        var cursor = db.collection(collec).find({
+            "gender": gender
+        }).sort({"fname": 1, "lname": 1});
+
+        return cursor;
+    },
+
+    // /srvntbyclass
+    GetServantByClass : function(db, req){
+        var cid = req.param('cid');
+
+        var cursor = db.collection(collec).find({
+            "curClassId": cid
+        }).sort({"fname": 1, "lname": 1});
+
+        return cursor;
+    },
+
+    GetServantByGrade : function(db, req){
+        var grade = req.param('grade');
+
+        var cursor = db.collection(collec).find({
+            "grade": grade
+        }).sort({"fname": 1, "lname": 1});
+
+        return cursor;
+    },
+
+    GetServantByAge : function(db, req){
+        var age = req.param('age');
+
+        var cursor = db.collection(collec).find({
+            "age": age
+        }).sort({"fname": 1, "lname": 1});
+
+        return cursor;
+    },
+
+    GetServantByAttendance : function(db, req){
+        var year = req.param('year');
+        var month = req.param('month');
+        var day = req.param('day');
+
+        var cursor;
+
+        if(day === undefined){
+            cursor = db.collection(collec).find({
+                "attendance.year": year,
+                "attendance.month": month,
+                "attendance.day": day
+            });
         }
-    );
-}
+        else if(month === undefined){
+            cursor = db.collection(collec).find({
+                "attendance.year": year,
+                "attendance.month": month
+            });
+        }
+        else{
+            cursor = db.collection(collec).find({
+                "attendance.year": year
+            });
+        }
 
-// Updates
-var SetFname = function(db, id, fname, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {"fname": fname},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("First Name was set properly");
-            callback(data);
-        });
-}
+        cursor.sort({"fname": 1, "lname": 1});
 
-var SetLname = function(db, id, Lname, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {"lname": Lname},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("Last Name was set properly");
-            callback(data);
-        });
-}
-
-var SetGender = function(db, id, gender, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {"gender": gender},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("Gender was set properly");
-            callback(data);
-        });
-}
-
-
-var SetDob = function(db, id, dob, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {"dob": dob},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("Day of birth was set properly");
-            callback(data);
-        });
-}
-
-
-var SetGrade = function(db, id, grade, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {"grade": grade},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("Grade was set properly");
-            callback(data);
-        });
-}
-
-var SetClass = function(db, id, cid, callback){
-    db.collection(collec).updateOne(
-        {"_id": id},
-        {"curClassId": cid},
-        function(err, data){
-            assert.equal(null, err);
-            console.log("Class was set properly");
-            callback(data);
-        });
-}
-
-// /srvnt?fname=value1&lname=value2&dob=value3
-var GetServant = function(db, req){
-    var fname = req.param('fname');
-    var lname = req.param('lname');
-    var dob = req.param('dob');
-
-    var cursor = db.collection(collec).find({
-        "fname": fname,
-        "lname": lname,
-        "dob": dob
-    });
-
-    return cursor;
-}
-
-// /srvntgndr?gender=value1
-var GetServantByGender = function(db, req){
-    var gender = req.param('gender');
-
-    var cursor = db.collection(collec).find({
-        "gender": gender
-    }).sort({"fname": 1, "lname": 1});
-
-    return cursor;
-}
-
-// /srvntbyclass
-var GetServantByClass = function(db, req){
-    var cid = req.param('cid');
-
-    var cursor = db.collection(collec).find({
-        "curClassId": cid
-    }).sort({"fname": 1, "lname": 1});
-
-    return cursor;
-}
-
-var GetServantByGrade = function(db, req){
-    var grade = req.param('grade');
-
-    var cursor = db.collection(collec).find({
-        "grade": grade
-    }).sort({"fname": 1, "lname": 1});
-
-    return cursor;
-}
-
-var GetServantByAge = function(db, req){
-    var age = req.param('age');
-
-    var cursor = db.collection(collec).find({
-        "age": age
-    }).sort({"fname": 1, "lname": 1});
-
-    return cursor;
-}
-
-var GetServantByAttendance = function(db, req){
-    var year = req.param('year');
-    var month = req.param('month');
-    var day = req.param('day');
-
-    var cursor;
-
-    if(day === undefined){
-        cursor = db.collection(collec).find({
-            "attendance.year": year,
-            "attendance.month": month,
-            "outreach.day": day
-        });
-    }
-    else if(month === undefined){
-        cursor = db.collection(collec).find({
-            "attendance.year": year,
-            "attendance.month": month
-        });
-    }
-    else{
-        cursor = db.collection(collec).find({
-            "attendance.year": year;
-        });
-    }
-
-    cursor.sort({"fname": 1, "lname": 1});
-
-    return cursor;
+        return cursor;
+    },
 }
