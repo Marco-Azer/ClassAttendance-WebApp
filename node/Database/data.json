@@ -1,4 +1,3 @@
-Students
 [
     {                        
             "fname": "Marco",                 
@@ -13,7 +12,7 @@ Students
                 "day": "7"   
             },              
             "phone": "2266060240",               
-            "emergNum": "6477780678",  
+            "emergNum": "6477780678",
             "emergName": "Nader Awadalla",    
             "addr": {
                 "aptNum": "5485",
@@ -99,7 +98,7 @@ Students
     }
 ]
 
-Servants[
+[
     {
         "fname": "Marco",
         "lname": "Azer",

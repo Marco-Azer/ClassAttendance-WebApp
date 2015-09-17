@@ -31,7 +31,6 @@ module.exports = {
         db.collection(collec).insertOne(student, function(err, data){
             assert.equal(null, err);
             console.log('Student was inserted properly');
-            callback(data);
         });
     },
 
@@ -54,10 +53,28 @@ module.exports = {
             });
     },
 
+    /*UpdateStudent : function(db, id, student){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {
+                "fname": student.fname,
+                "lname": student.lname,
+                "mname": student.mname,
+                "gender": student.gender,
+                "age": student.age,
+                "grade":student.grade,
+
+            },
+            function(err, data){
+                assert,equal(null, err);
+                console.log("Student was updated");
+            });
+    },*/
+
     SetPhone : function(db, id, phone, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"phone": phone},
+            {$set: {"phone": phone}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Phone was inserted properly");
@@ -68,7 +85,7 @@ module.exports = {
     SetEmergNum : function(db, id, emergnum, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"emergNum": emergnum},
+            {$set: {"emergNum": emergnum}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Emergency Number was inserted properly");
@@ -79,7 +96,7 @@ module.exports = {
     SetEmergName : function(db, id, emergname, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"emergName": emergname},
+            {$set: {"emergName": emergname}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Emergency Name was inserted properly");
@@ -90,7 +107,7 @@ module.exports = {
     SetPcode : function(db, id, pcode, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"pcode": pcode},
+            {$set: {"pcode": pcode}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Postal Code was inserted properly");
@@ -126,7 +143,7 @@ module.exports = {
     SetFname : function(db, id, fname, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"fname": fname},
+            {$set: {"fname": fname}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("First Name was set properly");
@@ -137,7 +154,7 @@ module.exports = {
     SetLname : function(db, id, Lname, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"lname": Lname},
+            {$set: {"lname": Lname}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Last Name was set properly");
@@ -148,7 +165,7 @@ module.exports = {
     SetGender : function(db, id, gender, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"gender": gender},
+            {$set: {"gender": gender}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Gender was set properly");
@@ -159,7 +176,7 @@ module.exports = {
     SetAge : function(db, id, age, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"age": age},
+            {$set: {"age": age}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Age was set properly");
@@ -170,7 +187,7 @@ module.exports = {
     SetGrade : function(db, id, grade, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"grade": grade},
+            {$set: {"grade": grade}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Grade was set properly");
@@ -181,7 +198,7 @@ module.exports = {
     SetDob : function(db, id, dob, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"dob": dob},
+            {$set: {"dob": dob}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Day of birth was set properly");
@@ -192,7 +209,7 @@ module.exports = {
     SetAddr : function(db, id, addr, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"addr": addr},
+            {$set: {"addr": addr}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Address was set properly");
@@ -203,7 +220,7 @@ module.exports = {
     SetClass : function(db, id, cid, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"curClassId": cid},
+            {$set: {"curClassId": cid}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Class was set properly");

@@ -28,7 +28,9 @@ module.exports = {
     	db.collection(collec).insertOne(srvnt, function(err, data){
     		assert.equal(null, err);
     		console.log("Servant was inserted properly");
-    		//callback(data);
+            if(data != undefined){
+                callback(data);
+            }
     	});
     },
 
