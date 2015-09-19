@@ -26,7 +26,7 @@ var assert = require('assert');
 
 module.exports = {
 
-    // Inserts
+    /*****************Inserts**************/
     InsertStudent : function(db, student, callback){
         db.collection(collec).insertOne(student, function(err, data){
             assert.equal(null, err);
@@ -38,195 +38,182 @@ module.exports = {
         db.collection(collec).insert(students, function(err, data){
             assert.equal(null, err);
             console.log('Students were inserted properly');
-            callback(data);
+            //callback(data);
         });
     },
 
-    SetMname : function(db, id, mname, callback){
+    // Needs testing
+    InsertAttendance : function(db, id, stdnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"mname": mname},
-            function(err, data){
-                assert.equal(null, err);
-                console.log("Middle Name was inserted properly");
-                callback(data);
-            });
-    },
-
-    /*UpdateStudent : function(db, id, student){
-        db.collection(collec).updateOne(
-            {"_id": id},
-            {
-                "fname": student.fname,
-                "lname": student.lname,
-                "mname": student.mname,
-                "gender": student.gender,
-                "age": student.age,
-                "grade":student.grade,
-
-            },
-            function(err, data){
-                assert,equal(null, err);
-                console.log("Student was updated");
-            });
-    },*/
-
-    SetPhone : function(db, id, phone, callback){
-        db.collection(collec).updateOne(
-            {"_id": id},
-            {$set: {"phone": phone}},
-            function(err, data){
-                assert.equal(null, err);
-                console.log("Phone was inserted properly");
-                callback(data);
-            });
-    },
-
-    SetEmergNum : function(db, id, emergnum, callback){
-        db.collection(collec).updateOne(
-            {"_id": id},
-            {$set: {"emergNum": emergnum}},
-            function(err, data){
-                assert.equal(null, err);
-                console.log("Emergency Number was inserted properly");
-                callback(data);
-            });
-    },
-
-    SetEmergName : function(db, id, emergname, callback){
-        db.collection(collec).updateOne(
-            {"_id": id},
-            {$set: {"emergName": emergname}},
-            function(err, data){
-                assert.equal(null, err);
-                console.log("Emergency Name was inserted properly");
-                callback(data);
-            });
-    },
-
-    SetPcode : function(db, id, pcode, callback){
-        db.collection(collec).updateOne(
-            {"_id": id},
-            {$set: {"pcode": pcode}},
-            function(err, data){
-                assert.equal(null, err);
-                console.log("Postal Code was inserted properly");
-                callback(data);
-            });
-    },
-
-    InsertAttendance : function(db, id, date, callback){
-        db.collection(collec).updateOne(
-            {"_id": id},
-            {$push: {"attendance": date}},
+            {$push: {"attendance": body.attendance}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Attendance date was inserted properly");
-                callback(data);
+                //callback(data);
             }
         );
     },
 
-    InsetOutreach : function(db, id, date, callback){
+    // Needs testing
+    InsetOutreach : function(db, id, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id":id},
-            {$push: {"outreach": date}},
+            {"_id": id},
+            {$push: {"outreach": stdnt.outreach}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Outreach date was inserted properly");
-                callback(data);
+                //callback(data);
             });
     },
+    /**************End Inserts**************/
 
-    // Updates
-
-    SetFname : function(db, id, fname, callback){
+    /**************Setters**************/
+    SetFname : function(db, stdnt, callback){
+        console.log(stdnt.fname);
         db.collection(collec).updateOne(
-            {"_id": id},
-            {$set: {"fname": fname}},
+            {
+                "fname":stdnt.fname,
+                "lname":stdnt.lname
+            },
+            {
+                $set: {"fname": stdnt.fname}
+            },
             function(err, data){
                 assert.equal(null, err);
                 console.log("First Name was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-    SetLname : function(db, id, Lname, callback){
+    SetLname : function(db, id, stdnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {$set: {"lname": Lname}},
+            {
+                $set: {"lname": stdnt.lname}
+            },
             function(err, data){
                 assert.equal(null, err);
                 console.log("Last Name was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-    SetGender : function(db, id, gender, callback){
+    SetMname : function(db, id, stdnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {$set: {"gender": gender}},
+            {$set: {"mname": stdnt.mname}},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Middle Name was inserted properly");
+                //callback(data);
+            });
+    },
+
+    SetGender : function(db, id, stdnt, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {$set: {"gender": stdnt.gender}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Gender was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-    SetAge : function(db, id, age, callback){
+    SetAge : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
-            {$set: {"age": age}},
+            {
+                "fname": stdnt.fname,
+                "lname":stdnt.lname
+            },
+            {$set: {"age": stdnt.age}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Age was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-    SetGrade : function(db, id, grade, callback){
+    SetGrade : function(db, id, stdnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {$set: {"grade": grade}},
+            {$set: {"grade": stdnt.grade}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Grade was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-    SetDob : function(db, id, dob, callback){
+    SetDob : function(db, id, stdnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {$set: {"dob": dob}},
+            {$set: {"dob": stdnt.dob}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Day of birth was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-    SetAddr : function(db, id, addr, callback){
+    SetPhone : function(db, id, stdnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {$set: {"addr": addr}},
+            {$set: {"phone": stdnt.phone}},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Phone was inserted properly");
+                //callback(data);
+            });
+    },
+
+    SetEmergNum : function(db, id, stdnt, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {$set: {"emergNum": stdnt.emergNum}},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Emergency Number was inserted properly");
+                //callback(data);
+            });
+    },
+
+    SetEmergName : function(db, id, stdnt, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {$set: {"emergName": stdnt.emergName}},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Emergency Name was inserted properly");
+                //callback(data);
+            });
+    },
+
+    SetAddress : function(db, id, stdnt, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {$set: {"addr": stdnt.addr}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Address was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-    SetClass : function(db, id, cid, callback){
+    SetClass : function(db, id, stdnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {$set: {"curClassId": cid}},
+            {$set: {"curClassId": stdnt.curClassId}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Class was set properly");
                 callback(data);
             });
     },
+    /**************End Setters**************/
+
+    /**************Getters**************/
 
     // /stdnt?fname=value1&lname=value2&dob=value3
     GetStudent : function(db, req){
@@ -341,4 +328,6 @@ module.exports = {
 
         return cursor;
     }
+
+    /**************End Getters**************/
 }

@@ -23,14 +23,13 @@ var collec = 'servant';
 var assert = require('assert');
 
 module.exports = {
-// Inserts
+
+    /*****************Inserts**************/
     InsertServant : function(db, srvnt, callback){
     	db.collection(collec).insertOne(srvnt, function(err, data){
     		assert.equal(null, err);
     		console.log("Servant was inserted properly");
-            if(data != undefined){
-                callback(data);
-            }
+            //callback(data);
     	});
     },
 
@@ -38,41 +37,8 @@ module.exports = {
     	db.collection(collec).insert(srvnts, function(err, data){
     		assert.equal(null, err);
     		console.log("Servants were inserted properly");
-    		callback(data);
+    		//callback(data);
     	});
-    },
-
-    SetMname : function(db, id, mname, callback){
-        db.collection(collec).updateOne(
-            {"_id": id},
-            {"mname": mname},
-            function(err, data){
-                assert.equal(null, err);
-                console.log("Middle Name was inserted properly");
-                callback(data);
-            });
-    },
-
-    SetAge : function(db, id, age, callback){
-        db.collection(collec).updateOne(
-            {"_id": id},
-            {"age": age},
-            function(err, data){
-                assert.equal(null, err);
-                console.log("Age was inserted properly");
-                callback(data);
-            });
-    },
-
-    SetPhone : function(db, id, phone, callback){
-        db.collection(collec).updateOne(
-            {"_id": id},
-            {"phone": phone},
-            function(err, data){
-                assert.equal(null, err);
-                console.log("Phone was inserted properly");
-                callback(data);
-            });
     },
 
     InsertAttendance : function(db, id, date, callback){
@@ -82,79 +48,114 @@ module.exports = {
             function(err, data){
                 assert.equal(null, err);
                 console.log("Attendance date was inserted properly");
-                callback(data);
+                //callback(data);
             }
         );
     },
+    /*****************End Inserts**************/
 
-    // Updates
-    SetFname : function(db, id, fname, callback){
+    /*****************Setters**************/
+    SetFname : function(db, id, srvnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"fname": fname},
+            {$set: {"fname": srvnt.fname}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("First Name was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-    SetLname : function(db, id, Lname, callback){
+    SetLname : function(db, id, srvnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"lname": Lname},
+            {$set: {"lname": srvnt.lname}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Last Name was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-    SetGender : function(db, id, gender, callback){
+    SetMname : function(db, id, srvnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"gender": gender},
+            {$set: {"mname": srvnt.mname}},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Middle Name was inserted properly");
+                //callback(data);
+            });
+    },
+
+    SetGender : function(db, id, srvnt, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {$set: {"gender": srvnt.gender}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Gender was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-
-    SetDob : function(db, id, dob, callback){
+    SetAge : function(db, id, srvnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"dob": dob},
+            {$set: {"age": srvnt.age}},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Age was set properly");
+                //callback(data);
+            });
+    },
+
+    SetDob : function(db, id, srvnt, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {$set: {"dob": srvnt.dob}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Day of birth was set properly");
-                callback(data);
+                //callback(data);
             });
     },
 
-
-    SetGrade : function(db, id, grade, callback){
+    SetPhone : function(db, id, srvnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"grade": grade},
+            {$set: {"phone": srvnt.phone}},
             function(err, data){
                 assert.equal(null, err);
-                console.log("Grade was set properly");
-                callback(data);
+                console.log("Phone was inserted properly");
+                //callback(data);
             });
     },
 
-    SetClass : function(db, id, cid, callback){
+    SetClass : function(db, id, srvnt, callback){
         db.collection(collec).updateOne(
             {"_id": id},
-            {"curClassId": cid},
+            {$set: {"curClassId": srvnt.curClassId}},
             function(err, data){
                 assert.equal(null, err);
                 console.log("Class was set properly");
-                callback(data);
+                //callback(data);
             });
     },
+
+    SetGrade : function(db, id, srvnt, callback){
+        db.collection(collec).updateOne(
+            {"_id": id},
+            {$set: {"grade": srvnt.grade}},
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Grade was set properly");
+                //callback(data);
+            });
+    },
+    /*****************End Setters**************/
+
+    /*****************Getters**************/
 
     // /srvnt?fname=value1&lname=value2&dob=value3
     GetServant : function(db, req){
@@ -244,5 +245,6 @@ module.exports = {
         cursor.sort({"fname": 1, "lname": 1});
 
         return cursor;
-    },
+    }
+    /*****************End Getters**************/
 }
