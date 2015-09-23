@@ -21,6 +21,7 @@
 
 var collec = 'servant';
 var assert = require('assert');
+var ObjectID = require('mongodb').ObjectID;
 
 module.exports = {
 
@@ -41,10 +42,20 @@ module.exports = {
     	});
     },
 
-    InsertAttendance : function(db, id, date, callback){
+    InsertAttendance : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
-            {$push: {"attendance": date}},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
+            {
+                $push: {
+                    "attendance": {
+                        "day": srvnt.day,
+                        "month": srvnt.month,
+                        "year": srvnt.year
+                    }
+                }
+            },
             function(err, data){
                 assert.equal(null, err);
                 console.log("Attendance date was inserted properly");
@@ -55,9 +66,11 @@ module.exports = {
     /*****************End Inserts**************/
 
     /*****************Setters**************/
-    SetFname : function(db, id, srvnt, callback){
+    SetFname : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
             {$set: {"fname": srvnt.fname}},
             function(err, data){
                 assert.equal(null, err);
@@ -66,9 +79,11 @@ module.exports = {
             });
     },
 
-    SetLname : function(db, id, srvnt, callback){
+    SetLname : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
             {$set: {"lname": srvnt.lname}},
             function(err, data){
                 assert.equal(null, err);
@@ -77,9 +92,11 @@ module.exports = {
             });
     },
 
-    SetMname : function(db, id, srvnt, callback){
+    SetMname : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
             {$set: {"mname": srvnt.mname}},
             function(err, data){
                 assert.equal(null, err);
@@ -88,9 +105,11 @@ module.exports = {
             });
     },
 
-    SetGender : function(db, id, srvnt, callback){
+    SetGender : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
             {$set: {"gender": srvnt.gender}},
             function(err, data){
                 assert.equal(null, err);
@@ -99,9 +118,11 @@ module.exports = {
             });
     },
 
-    SetAge : function(db, id, srvnt, callback){
+    SetAge : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
             {$set: {"age": srvnt.age}},
             function(err, data){
                 assert.equal(null, err);
@@ -110,10 +131,18 @@ module.exports = {
             });
     },
 
-    SetDob : function(db, id, srvnt, callback){
+    SetDob : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
-            {$set: {"dob": srvnt.dob}},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
+            {
+                $set: {
+                    "dob.day": srvnt.day,
+                    "dob.month": srvnt.month,
+                    "dob.year": srvnt.year
+                }
+            },
             function(err, data){
                 assert.equal(null, err);
                 console.log("Day of birth was set properly");
@@ -121,9 +150,11 @@ module.exports = {
             });
     },
 
-    SetPhone : function(db, id, srvnt, callback){
+    SetPhone : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
             {$set: {"phone": srvnt.phone}},
             function(err, data){
                 assert.equal(null, err);
@@ -132,9 +163,11 @@ module.exports = {
             });
     },
 
-    SetClass : function(db, id, srvnt, callback){
+    SetClass : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
             {$set: {"curClassId": srvnt.curClassId}},
             function(err, data){
                 assert.equal(null, err);
@@ -143,9 +176,11 @@ module.exports = {
             });
     },
 
-    SetGrade : function(db, id, srvnt, callback){
+    SetGrade : function(db, srvnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(srvnt._id)
+            },
             {$set: {"grade": srvnt.grade}},
             function(err, data){
                 assert.equal(null, err);
@@ -245,6 +280,20 @@ module.exports = {
         cursor.sort({"fname": 1, "lname": 1});
 
         return cursor;
-    }
+    },
     /*****************End Getters**************/
+
+    /*****************Start Removes**************/
+    RemoveServant : function(db, srvnt, callback){
+        db.collection(collec).deleteOne({
+            "_id": ObjectID(srvnt._id)
+            },
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Servant was removed properly");
+                //callback(data);
+            }
+        );
+    }
+    /*****************End Removes**************/
 }

@@ -23,6 +23,7 @@
 
 var collec = 'student';
 var assert = require('assert');
+var ObjectID = require('mongodb').ObjectID;
 
 module.exports = {
 
@@ -43,10 +44,20 @@ module.exports = {
     },
 
     // Needs testing
-    InsertAttendance : function(db, id, stdnt, callback){
+    InsertAttendance : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
-            {$push: {"attendance": body.attendance}},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
+            {
+                $push: {
+                    "attendance": {
+                        "day": stdnt.day,
+                        "month": stdnt.month,
+                        "year": stdnt.year
+                    }
+                }
+            },
             function(err, data){
                 assert.equal(null, err);
                 console.log("Attendance date was inserted properly");
@@ -56,10 +67,20 @@ module.exports = {
     },
 
     // Needs testing
-    InsetOutreach : function(db, id, stdnt, callback){
+    InsertOutreach : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
-            {$push: {"outreach": stdnt.outreach}},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
+            {
+                $push: {
+                    "outreach": {
+                        "day": stdnt.day,
+                        "month": stdnt.month,
+                        "year": stdnt.year
+                    }
+                }
+            },
             function(err, data){
                 assert.equal(null, err);
                 console.log("Outreach date was inserted properly");
@@ -70,11 +91,9 @@ module.exports = {
 
     /**************Setters**************/
     SetFname : function(db, stdnt, callback){
-        console.log(stdnt.fname);
         db.collection(collec).updateOne(
             {
-                "fname":stdnt.fname,
-                "lname":stdnt.lname
+                "_id":ObjectID(stdnt._id)
             },
             {
                 $set: {"fname": stdnt.fname}
@@ -86,9 +105,11 @@ module.exports = {
             });
     },
 
-    SetLname : function(db, id, stdnt, callback){
+    SetLname : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
             {
                 $set: {"lname": stdnt.lname}
             },
@@ -99,9 +120,11 @@ module.exports = {
             });
     },
 
-    SetMname : function(db, id, stdnt, callback){
+    SetMname : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
             {$set: {"mname": stdnt.mname}},
             function(err, data){
                 assert.equal(null, err);
@@ -110,9 +133,11 @@ module.exports = {
             });
     },
 
-    SetGender : function(db, id, stdnt, callback){
+    SetGender : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
             {$set: {"gender": stdnt.gender}},
             function(err, data){
                 assert.equal(null, err);
@@ -124,8 +149,7 @@ module.exports = {
     SetAge : function(db, stdnt, callback){
         db.collection(collec).updateOne(
             {
-                "fname": stdnt.fname,
-                "lname":stdnt.lname
+                "_id":ObjectID(stdnt._id)
             },
             {$set: {"age": stdnt.age}},
             function(err, data){
@@ -135,9 +159,11 @@ module.exports = {
             });
     },
 
-    SetGrade : function(db, id, stdnt, callback){
+    SetGrade : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
             {$set: {"grade": stdnt.grade}},
             function(err, data){
                 assert.equal(null, err);
@@ -146,10 +172,18 @@ module.exports = {
             });
     },
 
-    SetDob : function(db, id, stdnt, callback){
+    SetDob : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
-            {$set: {"dob": stdnt.dob}},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
+            {
+                $set: {
+                    "dob.day": stdnt.day,
+                    "dob.month": stdnt.month,
+                    "dob.year": stdnt.year
+                }
+            },
             function(err, data){
                 assert.equal(null, err);
                 console.log("Day of birth was set properly");
@@ -157,9 +191,11 @@ module.exports = {
             });
     },
 
-    SetPhone : function(db, id, stdnt, callback){
+    SetPhone : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
             {$set: {"phone": stdnt.phone}},
             function(err, data){
                 assert.equal(null, err);
@@ -168,9 +204,11 @@ module.exports = {
             });
     },
 
-    SetEmergNum : function(db, id, stdnt, callback){
+    SetEmergNum : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
             {$set: {"emergNum": stdnt.emergNum}},
             function(err, data){
                 assert.equal(null, err);
@@ -179,9 +217,11 @@ module.exports = {
             });
     },
 
-    SetEmergName : function(db, id, stdnt, callback){
+    SetEmergName : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
             {$set: {"emergName": stdnt.emergName}},
             function(err, data){
                 assert.equal(null, err);
@@ -190,9 +230,11 @@ module.exports = {
             });
     },
 
-    SetAddress : function(db, id, stdnt, callback){
+    SetAddress : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
             {$set: {"addr": stdnt.addr}},
             function(err, data){
                 assert.equal(null, err);
@@ -201,9 +243,11 @@ module.exports = {
             });
     },
 
-    SetClass : function(db, id, stdnt, callback){
+    SetClass : function(db, stdnt, callback){
         db.collection(collec).updateOne(
-            {"_id": id},
+            {
+                "_id":ObjectID(stdnt._id)
+            },
             {$set: {"curClassId": stdnt.curClassId}},
             function(err, data){
                 assert.equal(null, err);
@@ -327,7 +371,21 @@ module.exports = {
         cursor.sort({"fname": 1, "lname": 1});
 
         return cursor;
-    }
+    },
 
     /**************End Getters**************/
+
+    /*****************Start Removes**************/
+    RemoveStudent : function(db, stdnt, callback){
+        db.collection(collec).deleteOne({
+                "_id": ObjectID(stdnt._id)
+            },
+            function(err, data){
+                assert.equal(null, err);
+                console.log("Student was removed properly");
+                //callback(data);
+            }
+        );
+    }
+    /*****************End Removes**************/
 }
