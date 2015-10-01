@@ -11,7 +11,50 @@
  </head>
 
  <body ng-app="test">
+     <nav class="navbar navbar-inverse">
+         <div class="container">
+             <!-- Brand and toggle get grouped for better mobile display -->
+             <div class="navbar-header">
+                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                 </button>
+                 <a class="navbar-brand" href="#">Sunday School</a>
+             </div>
 
+             <!-- Collect the nav links, forms, and other content for toggling -->
+             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                 <ul class="nav navbar-nav">
+                     <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+                     <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Students<span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                             <li><a href="#">New</a></li>
+                             <li><a href="#">Search</a></li>
+                         </ul>
+                     </li>
+                     <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servants<span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                             <li><a href="#">New</a></li>
+                             <li><a href="#">Search</a></li>
+                         </ul>
+                     </li>
+                     <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Class<span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                             <li><a href="#">New</a></li>
+                             <li><a href="#">Search</a></li>
+                             <li><a href="#">Add Attendance</a></li>
+                         </ul>
+                     </li>
+                     <li><a href="#">About</a></li>
+                 </ul>
+             </div><!-- /.navbar-collapse -->
+         </div><!-- /.container-fluid -->
+     </nav>
     <div ng-show="1" class="container">
         <h1>Add Student</h1>
         <form>
@@ -136,6 +179,94 @@
                 <input type="text" class="form-control" placeholder="Province"/>
                 <input type="text" class="form-control" placeholder="Country"/>
                 <input type="text" class="form-control" placeholder="Postal Code"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Class Name"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div ng-show="1" class="container">
+        <h1>Search Student</h1>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="First Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Last Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Middle Name"/>
+            </div>
+            <div class="form-group">
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="m"> Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="f"> Female
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Age"/>
+            </div>
+            <div class="form-group">
+                <select name="" class="form-control">
+                    <option value="0">Grade</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div ng-show="1" class="container">
+        <h1>Search Servants</h1>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="First Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Last Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Middle Name"/>
+            </div>
+            <div class="form-group">
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="m"> Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="f"> Female
+                </label>
+            </div>
+            <div class="form-group">
+                <select name="" id="" class="form-control">
+                    <option value="0">Grade</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Class Name"/>
