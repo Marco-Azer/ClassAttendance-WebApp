@@ -24,6 +24,11 @@ MongoClient.connect(url, function(err, database){
 	DB = database;
 });
 
+app.get('/', function(req,res){
+	var obj = {"fanme":"marco", "lname":"azer"};
+	res.send(obj);
+});
+
 // Students
 /*****************Students PUT**************/
 app.put('/student', function(req,res){
