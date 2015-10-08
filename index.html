@@ -131,7 +131,7 @@
     </div>
 
     <div class="container" ng-show="tab == 3">
-        <div class="col-md-12">
+        <div id="SearchStudent" class="col-md-12">
             <h1>Search Student</h1>
             <form>
                 <div class="form-group">
@@ -175,78 +175,138 @@
             </form>
         </div>
 
-        <div class="col-md-12">
+        <div id="ViewStudent" class="col-md-12">
             <div class="col-md-6">
                 <p>Image</p>
             </div>
             <div class="col=md-6">
-                <h1>Full name</h1>
+                <h3>Personal Info</h3>
+                <ul>
+                    <li>Full Name</li>
+                    <li>Gender</li>
+                    <li>Age</li>
+                    <li>DOB</li>
+                    <li>Grade</li>
+                    <li>Phone number</li>
+                    <li>Address</li>
+                    <li>Emergency name</li>
+                    <li>Emergency Number</li>
+                </ul>
+                
+                <h3>Attendance</h3>
+                <table>
+                    <tr>
+                        <th>Day</th>
+                        <th>Month</th>
+                        <th>Year</th>
+                    </tr>
+                </table>
 
+                <h3>Outreach</h3>
+                <table>
+                    <tr>
+                        <th>Day</th>
+                        <th>Month</th>
+                        <th>Year</th>
+                    </tr>
+                </table>
+
+                <h3>Notes</h3>
+                <p>Notes</p>
             </div>
         </div>
     </div>
 
     <div class="container" ng-show="tab == 4">
-        <h1>Add Servant</h1>
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name"/>
+        <div id="Add Servant">
+            <h1>Add Servant</h1>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="First Name"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Last Name"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Middle Name"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Age"/>
+                </div>
+                <div class="form-group">
+                    <select name="" id="" class="form-control">
+                        <option value="0">Grade</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div class="form-group form-inline">
+                    <input type="text" class="form-control" placeholder="Day of Birth"/>
+                    <input type="text" class="form-control" placeholder="Month of Birth"/>
+                    <input type="text" class="form-control" placeholder="Year of birth"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Phone number"/>
+                </div>
+                <div class="form-group form-inline">
+                    <input type="text" class="form-control" placeholder="Apt. Number"/>
+                    <input type="text" class="form-control" placeholder="Street Name"/>
+                    <input type="text" class="form-control" placeholder="City"/>
+                    <input type="text" class="form-control" placeholder="Province"/>
+                    <input type="text" class="form-control" placeholder="Country"/>
+                    <input type="text" class="form-control" placeholder="Postal Code"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Class Name"/>
+                </div>
+                <div class="form-group">
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="m"> Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="f"> Female
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <div id="ViewServant">
+            <div class="col-md-6">
+                <p>Image</p>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Last Name"/>
+            <div class="col=md-6">
+                <h3>Personal Info</h3>
+                <ul>
+                    <li>Full Name</li>
+                    <li>Gender</li>
+                    <li>Age</li>
+                    <li>DOB</li>
+                    <li>Grade</li>
+                    <li>Phone number</li>
+                    <li>Address</li>
+                </ul>
+                
+                <h3>Attendance</h3>
+                <table>
+                    <tr>
+                        <th>Day</th>
+                        <th>Month</th>
+                        <th>Year</th>
+                    </tr>
+                </table>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Middle Name"/>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Age"/>
-            </div>
-            <div class="form-group">
-                <select name="" id="" class="form-control">
-                    <option value="0">Grade</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-            </div>
-            <div class="form-group form-inline">
-                <input type="text" class="form-control" placeholder="Day of Birth"/>
-                <input type="text" class="form-control" placeholder="Month of Birth"/>
-                <input type="text" class="form-control" placeholder="Year of birth"/>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Phone number"/>
-            </div>
-            <div class="form-group form-inline">
-                <input type="text" class="form-control" placeholder="Apt. Number"/>
-                <input type="text" class="form-control" placeholder="Street Name"/>
-                <input type="text" class="form-control" placeholder="City"/>
-                <input type="text" class="form-control" placeholder="Province"/>
-                <input type="text" class="form-control" placeholder="Country"/>
-                <input type="text" class="form-control" placeholder="Postal Code"/>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Class Name"/>
-            </div>
-            <div class="form-group">
-                <label class="radio-inline">
-                    <input type="radio" name="gender" value="m"> Male
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="gender" value="f"> Female
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
     </div>
 
     <div class="container" ng-show="tab == 5">
