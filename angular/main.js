@@ -6,6 +6,10 @@ app.factory('dataFac', function($resource){
 	return data;
 });
 
+app.factory('putStudentsFac', function($resource){
+
+});
+
 app.controller('DBCtrl', ['$scope', '$http', 'dataFac', function($scope, $http, dataFac){
 	// $scope.getData = function(){
 	// 	$http.get('http://localhost:8080').then(function(res){
@@ -20,4 +24,22 @@ app.controller('DBCtrl', ['$scope', '$http', 'dataFac', function($scope, $http, 
 		console.log(dataFac);
 	}
 		
+}]);
+
+app.factory('NewStudentFact', function($resource){
+	var obj = {};
+	var conn = $resource('http://localhost:8080/student');
+	obj.addNewStudent = function(student){
+		$conn.save(student);
+	};
+	return obj;
+});
+
+app.controller('StudentCtrl', ['$scope', 'NewStudentFact', function($scope, NewStudentFact){
+	$scope.printData = function(){
+		console.log($scope.new);
+	};
+	$scope.putStudent = function(){
+		NewStudentFact.addNewStudent($scope.new);
+	};
 }]);

@@ -31,7 +31,7 @@ app.get('/', function(req,res){
 
 // Students
 /*****************Students PUT**************/
-app.put('/student', function(req,res){
+app.post('/student', function(req,res){
 	stdnt.InsertStudent(DB, req.body);
 	res.send();
 });

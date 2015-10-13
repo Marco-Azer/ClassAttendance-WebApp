@@ -61,23 +61,23 @@
         <p>Home Page</p>
     </div>
 
-    <div class="container" ng-show="tab == 2" ng-controller="DBCtrl">
+    <div class="container" ng-show="tab == 2" ng-controller="StudentCtrl">
         <h1>Add Student</h1>
         <form>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name"/>
+                <input type="text" class="form-control" ng-model="new.fname" placeholder="First Name">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Last Name"/>
+                <input type="text" class="form-control" ng-model="new.lname" placeholder="Last Name"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Middle Name"/>
+                <input type="text" class="form-control" ng-model="new.mname" placeholder="Middle Name"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Age"/>
+                <input type="text" class="form-control" ng-model="new.age" placeholder="Age"/>
             </div>
             <div class="form-group">
-                <select name="" id="" class="form-control">
+                <select name="" class="form-control" ng-model="new.grade">
                     <option value="0">Grade</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -94,39 +94,39 @@
                 </select>
             </div>
             <div class="form-group form-inline">
-                <input type="text" class="form-control" placeholder="Day of Birth"/>
-                <input type="text" class="form-control" placeholder="Month of Birth"/>
-                <input type="text" class="form-control" placeholder="Year of birth"/>
+                <input type="text" class="form-control" ng-model="new.dob" placeholder="Day of Birth"/>
+                <input type="text" class="form-control" ng-model="new.mob" placeholder="Month of Birth"/>
+                <input type="text" class="form-control" ng-model="new.yob" placeholder="Year of birth"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Phone number"/>
+                <input type="text" class="form-control" ng-model="new.phone" placeholder="Phone number"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Emergency Name"/>
+                <input type="text" class="form-control" ng-model="new.emergName" placeholder="Emergency Name"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Emergency Number"/>
+                <input type="text" class="form-control" ng-model="new.emergNum" placeholder="Emergency Number"/>
             </div>
             <div class="form-group form-inline">
-                <input type="text" class="form-control" placeholder="Apt. Number"/>
-                <input type="text" class="form-control" placeholder="Street Name"/>
-                <input type="text" class="form-control" placeholder="City"/>
-                <input type="text" class="form-control" placeholder="Province"/>
-                <input type="text" class="form-control" placeholder="Country"/>
-                <input type="text" class="form-control" placeholder="Postal Code"/>
+                <input type="text" class="form-control" ng-model="new.aptNum" placeholder="Apt. Number"/>
+                <input type="text" class="form-control" ng-model="new.streetName" placeholder="Street Name"/>
+                <input type="text" class="form-control" ng-model="new.city" placeholder="City"/>
+                <input type="text" class="form-control" ng-model="new.province" placeholder="Province"/>
+                <input type="text" class="form-control" ng-model="new.country" placeholder="Country"/>
+                <input type="text" class="form-control" ng-model="new.pcode" placeholder="Postal Code"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Class Name"/>
+                <input type="text" class="form-control" ng-model="new.class" placeholder="Class Name"/>
             </div>
             <div class="form-group">
                 <label class="radio-inline">
-                    <input type="radio" name="gender" value="m"> Male
+                    <input type="radio" ng-model="new.gender" value="m"> Male
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" name="gender" value="f"> Female
+                    <input type="radio" ng-model="new.gender" value="f"> Female
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary" ng-click="getData()">Submit</button>
+            <button type="submit" class="btn btn-primary" ng-click="putStudent()">Submit</button>
         </form>
     </div>
 
@@ -322,7 +322,7 @@
                 <input type="text" class="form-control" placeholder="Middle Name"/>
             </div>
             <div class="form-group">
-                <select name="" id="" class="form-control">
+                <select name="" class="form-control">
                     <option value="0">Grade</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
