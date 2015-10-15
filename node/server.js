@@ -12,6 +12,11 @@ http.listen(8080, function(){
 });
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(function(req, res, next){
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
 
 var MongoClient = require('mongodb').MongoClient;
 
@@ -31,7 +36,7 @@ app.get('/', function(req,res){
 
 // Students
 /*****************Students PUT**************/
-app.put('/student', function(req,res){
+app.post('/student', function(req,res){
 	stdnt.InsertStudent(DB, req.body);
 	res.send();
 });
@@ -48,7 +53,7 @@ app.put('/student/outreach', function(req, res){
 /*****************End Students PUT**************/
 
 /*****************Students GET**************/
-app.get('/student', function(req, res){
+app.get('/student/:fname/:lname/:mname', function(req, res){
 	var cursor = stdnt.GetStudent(DB, req);
 	cursor.toArray(function(err, data){
 		res.json(data);
@@ -92,63 +97,63 @@ app.get('/student/outreach', function(req, res){
 /*****************End Students GET**************/
 
 /*****************Students POST**************/
-app.post('/student/fname', function(req, res){
+app.put('/student/fname', function(req, res){
 	console.log(req.body._id);
 	stdnt.SetFname(DB, req.body);
 	res.send();
 });
 
-app.post('/student/lname', function(req, res){
+app.put('/student/lname', function(req, res){
 	stdnt.SetLname(DB, req.body);
 	res.send();
 });
 
-app.post('/student/mname', function(req, res){
+app.put('/student/mname', function(req, res){
 	stdnt.SetMname(DB, req.body);
 	res.send();
 });
 
-app.post('/student/gender', function(req, res){
+app.put('/student/gender', function(req, res){
 	stdnt.SetGender(DB, req.body);
 	res.send();
 });
 
-app.post('/student/age', function(req, res){
+app.put('/student/age', function(req, res){
 	stdnt.SetAge(DB, req.body);
 	res.send();
 });
 
-app.post('/student/grade', function(req, res){
+app.put('/student/grade', function(req, res){
 	stdnt.SetGrade(DB, req.body);
 	res.send();
 });
 
-app.post('/student/dob', function(req, res){
+app.put('/student/dob', function(req, res){
 	stdnt.SetDob(DB, req.body);
 	res.send();
 });
 
-app.post('/student/phone', function(req, res){
+app.put('/student/phone', function(req, res){
 	stdnt.SetPhone(DB, req.body);
 	res.send();
 });
 
-app.post('/student/emergNum', function(req, res){
+app.put('/student/emergNum', function(req, res){
 	stdnt.SetEmergNum(DB, req.body);
 	res.send();
 });
 
-app.post('/student/emergName', function(req, res){
+app.put('/student/emergName', function(req, res){
 	stdnt.SetEmergName(DB, req.body);
 	res.send();
 });
 
-app.post('/student/addr', function(req, res){
+app.put('/student/addr', function(req, res){
 	stdnt.SetAddr(DB, req.body);
 	res.send();
 });
 
-app.post('/student/curClassId', function(req, res){
+app.put('/student/curClassId', function(req, res){
 	stdnt.SetClass(DB, req.body);
 	res.send();
 });
@@ -166,7 +171,7 @@ app.delete('/student', function(req, res){
 
 // Servants
 //*****************Servants PUT**************/
-app.put('/servant', function(req, res){
+app.post('/servant', function(req, res){
 	srvnt.InsertServant(DB, req.body);
 	res.send();
 });
@@ -214,47 +219,47 @@ app.get('/servant/attendance', function(req, res){
 });
 
 /*****************Servants POST**************/
-app.post('/servant/fname', function(req, res){
+app.put('/servant/fname', function(req, res){
 	srvnt.SetFname(DB, req.body);
 	res.send();
 });
 
-app.post('/servant/lname', function(req, res){
+app.put('/servant/lname', function(req, res){
 	srvnt.SetLname(DB, req.body);
 	res.send();
 });
 
-app.post('/servant/mname', function(req, res){
+app.put('/servant/mname', function(req, res){
 	srvnt.SetMname(DB, req.body);
 	res.send();
 });
 
-app.post('/servant/gender', function(req, res){
+app.put('/servant/gender', function(req, res){
 	srvnt.SetGender(DB, req.body);
 	res.send();
 });
 
-app.post('/servant/age', function(req, res){
+app.put('/servant/age', function(req, res){
 	srvnt.SetAge(DB, req.body);
 	res.send();
 });
 
-app.post('/servant/dob', function(req, res){
+app.put('/servant/dob', function(req, res){
 	srvnt.SetDob(DB, req.body);
 	res.send();
 });
 
-app.post('/servant/phone', function(req, res){
+app.put('/servant/phone', function(req, res){
 	srvnt.SetPhone(DB, req.body);
 	res.send();
 });
 
-app.post('/servant/curClassId', function(req, res){
+app.put('/servant/curClassId', function(req, res){
 	srvnt.SetClass(DB, req.body);
 	res.send();
 });
 
-app.post('/servant/grade', function(req, res){
+app.put('/servant/grade', function(req, res){
 	srvnt.SetGrade(DB, req.body);
 	res.send();
 });
