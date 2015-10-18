@@ -48,7 +48,7 @@
                          <ul class="dropdown-menu">
                              <li><a href="#">New</a></li>
                              <li><a href="#">Search</a></li>
-                             <li><a href="#">Add Attendance</a></li>
+                             <li><a href="#" ng-click="tab = 6">Add Attendance</a></li>
                          </ul>
                      </li>
                      <li><a href="#">About</a></li>
@@ -175,7 +175,7 @@
             </form>
         </div>
 
-        <div id="ViewStudent" class="col-md-12">
+        <div id="ViewOneStudent" class="col-md-12">
             <div class="col-md-6">
                 <p>Image</p>
             </div>
@@ -214,6 +214,29 @@
                 <h3>Notes</h3>
                 <p>Notes</p>
             </div>
+        </div>
+
+        <div id="ViewMultipleStudents">
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Grade</th>
+                    <th>Class</th>
+                </tr>
+                <tr ng-repeat="student in students">
+                    <td><img src="{{student.picture}}" class="img-thumbnail"></td>
+                    <td>{{student.fname}}</td>
+                    <td>{{student.lname}}</td>
+                    <td>{{student.gender}}</td>
+                    <td>{{student.age}}</td>
+                    <td>{{student.grade}}</td>
+                    <td>{{student.class}}</td>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -351,6 +374,33 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+    </div>
+
+    <div class="container" ng-show="tab == 6">
+        <div id="AddAttendance">
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Grade</th>
+                    <th>Class</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="student in students">
+                    <td><img src="{{student.picture}}" class="img-thumbnail"></td>
+                    <td>{{student.fname}}</td>
+                    <td>{{student.lname}}</td>
+                    <td>{{student.gender}}</td>
+                    <td>{{student.age}}</td>
+                    <td>{{student.grade}}</td>
+                    <td>{{student.class}}</td>
+                    <td><button>Attended</button></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <!-- Latest compiled and minified JavaScript -->
