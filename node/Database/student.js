@@ -261,14 +261,16 @@ module.exports = {
 
     // /stdnt?fname=value1&lname=value2&dob=value3
     GetStudent : function(db, req){
-        var fname = req.param('fname') || null;
-        var lname = req.param('lname') || null;
-        var mname = req.param('mname') || null;
-        var yob = req.param('year') || null;
-        var mob = req.param('month') || null;
-        var dob = req.param('day') || null;
-        var myclass = req.param('class') || null;
-        var grade = req.param('grade') || null;
+        var fname = req.query.fname || null;
+        var lname = req.query.lname || null;
+        var mname = req.query.mname || null;
+        var gender = req.query.gender || null;
+        var age = req.query.age || null;
+        var yob = req.query.yob || null;
+        var mob = req.query.mob || null;
+        var dob = req.query.dob || null;
+        var myclass = req.query.class || null;
+        var grade = req.query.grade || null;
         var searchObj = {};
 
         if(fname){
@@ -279,6 +281,12 @@ module.exports = {
         }
         if(mname){
             searchObj.mname = mname;
+        }
+        if(age){
+            searchObj.age = age;
+        }
+        if(gender){
+            searchObj.gender = gender;
         }
         if(yob){
             searchObj.dob.year = yob;
