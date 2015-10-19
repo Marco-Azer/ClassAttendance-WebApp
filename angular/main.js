@@ -21,3 +21,37 @@ app.controller('DBCtrl', ['$scope', '$http', 'dataFac', function($scope, $http, 
 	}
 		
 }]);
+
+app.controller('AddStudentCtrl', ['$scope', '$http', function($scope, $http){
+	$scope.submit = function(){
+		$http.post('http://localhost:8080/student', $scope.new).then(
+				function(){
+					$scope.new = {};
+					console.log("Student was inserted");
+				},
+				function(){
+					console.log("Couldn't insert student");
+				}
+			);
+	}
+}]);
+
+app.controller('AddServantCtrl', ['$scope', '$http', function($scope, $http){
+	$scope.submit = function(){
+		$http.post('http://localhost:8080/servant', $scope.new).then(
+				function(){
+					$scope.new = {};
+					console.log("Student was inserted");
+				},
+				function(){
+					console.log("Couldn't insert servant");
+				}
+			);
+	}
+}]);
+
+app.controller('SearchStudentCtrl', ['$scope', '$http', function($scope, $http){
+	$scope.search = function(){
+		$scope.stdnts = $http.get()
+	};
+}]);
