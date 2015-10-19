@@ -53,7 +53,7 @@ app.put('/student/outreach', function(req, res){
 /*****************End Students PUT**************/
 
 /*****************Students GET**************/
-app.get('/student/:fname/:lname/:mname', function(req, res){
+app.get('/student', function(req, res){
 	var cursor = stdnt.GetStudent(DB, req);
 	cursor.toArray(function(err, data){
 		res.json(data);

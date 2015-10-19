@@ -261,17 +261,45 @@ module.exports = {
 
     // /stdnt?fname=value1&lname=value2&dob=value3
     GetStudent : function(db, req){
-        var fname = req.param('fname');
-        var lname = req.param('lname');
-        var year = req.param('year');
-        var month = req.param('month');
-        var day = req.param('day');
+        var fname = req.param('fname') || null;
+        var lname = req.param('lname') || null;
+        var mname = req.param('mname') || null;
+        var yob = req.param('year') || null;
+        var mob = req.param('month') || null;
+        var dob = req.param('day') || null;
+        var myclass = req.param('class') || null;
+        var grade = req.param('grade') || null;
+        var searchObj = {};
 
-        var cursor = db.collection(collec).find({
-            "fname": fname,
-            "lname": lname,
-            "dob":{"year": year, "month": month, "day": day}
-        });
+        if(fname){
+            searchObj.fname = fname;
+        }
+        if(lname){
+            searchObj.lname = lname;
+        }
+        if(mname){
+            searchObj.mname = mname;
+        }
+        if(yob){
+            searchObj.dob.year = yob;
+        }
+        if(mob){
+            searchObj.dob.month = mob;
+        }
+        if(dob){
+            searchObj.dob.day = dob;
+        }
+        if(fname){
+            searchObj.fname = fname;
+        }
+        if(myclass){
+            searchObj.class = myclass;
+        }
+        if(grade){
+            searchObj.grade = grade;
+        }
+
+        var cursor = db.collection(collec).find(searchObj);
 
         return cursor;
     },
