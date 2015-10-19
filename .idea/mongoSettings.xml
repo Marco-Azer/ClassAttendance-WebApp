@@ -13,6 +13,6 @@
         </ServerConfiguration>
       </list>
     </option>
-    <option name="shellPath" value="$PROJECT_DIR$/../../../mongodb-osx-x86_64-3.0.6/bin/mongo" />
+    <option name="shellPath" value="$PROJECT_DIR$/../../../mongodb/bin/mongo" />
   </component>
 </project>
