@@ -11,11 +11,22 @@
         mname      : Middle Name    (String)
         gender     : Gender    		(Char(1))*
         age        : Age            (INT)
-        dob        : Date Of Birth  (Date)*
+        dob        : {              Date Of Birth  (Date)*
+            "y" : year
+            "m" : month
+            "d" :day
+        }
         phone      : Phone Number   (String)
-        curClassId : Class Serving  (INT)*
-        grade      : Grade Serving  (Char(2))*
-        attendance : Dates Attended (Array of dates)
+        class      : {
+            "name"
+            "church"
+            "grade"
+        }
+        atndc      : [{
+            "y" : year
+            "m" : month
+            "d" : day
+        }]
     }
 */
 

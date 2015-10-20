@@ -4,6 +4,7 @@ var assert = require('assert');
 var bodyParser = require('body-parser');
 var stdnt = require('./Database/student.js');
 var srvnt = require('./Database/servant.js');
+var myclass = require('./Database/class.js');
 
 var app = express();
 var http = require('http').Server(app);
@@ -272,14 +273,16 @@ app.delete('/servant', function(req, res){
 });
 /*****************End Students DELETE**************/
 
-//var port = process.env.PORT || 8080;
-//
-//var router = express.Router();
-//
-//router.get('/', function(req, res){
-//	res.json({message: 'Hooray first API'});
-//});
-//
-//app.use('/api', router);
-//app.listen(port);
-//console.log('Magic Happens on port ' + port);
+
+/*****************Start Class Insert**************/
+app.post('/class', function(req, res){
+	myclass.InsertClass(DB, req.body);
+	res.send();
+});
+
+app.get('/class', function(req, res){
+	var cursor = myclass.GetClass(DB, req);
+	cursor.toArray(function(err, data){
+		res.json(data);
+	});
+});

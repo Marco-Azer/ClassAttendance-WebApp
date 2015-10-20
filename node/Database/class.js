@@ -17,52 +17,74 @@
 var collec = "class";
 
 // Inserts
-
-var InsertClass = function(db, cls, callback){
-	db.collection(collec).insertOne(cls, function(err, data){
-		assert.equal(null, err);
-		console.log("Class was inserted properly");
-		callback(data);
-	});
-}
-
-var InsertClasses = function(db, clses, callback){
-	db.collection(collec).insert(clses, function(err, data){
-		assert.equal(null, err);
-		console.log("Classes were inserted properly");
-		callback(data);
-	})
-}
-
-var InsertChurch = function(db, id, chrchname, callback){
-	db.collection(collec).updateOne(
-		{"_id", id},
-		{"church", chrchname},
-		function(err, data){
+module.exports = {
+	InsertClass : function(db, cls, callback){
+		db.collection(collec).insertOne(cls, function(err, data){
 			assert.equal(null, err);
-			console.log("Church name was added properly");
+			console.log("Class was inserted properly");
 			callback(data);
 		});
-}
+	},
 
-var SetStdntNum = function(db, id, stdtnum, callback){
-	db.collection(collec).updateOne(
-		{"_id": id},
-		{"stdtNum": stdtnum},
-		function(err, data){
+	InsertClasses : function(db, clses, callback){
+		db.collection(collec).insert(clses, function(err, data){
 			assert.equal(null, err);
-			console.log("Student number was set properly");
+			console.log("Classes were inserted properly");
 			callback(data);
-		});
-}
+		})
+	},
 
-var SetSrvntNum = function(db, id, srvntnum, callback){
-	db.collection(collec).updateOne(
-		{"_id": id},
-		{"srvntNum": srvntnum},
-		function(err, data){
-			assert.equal(null, err);
-			console.log("Servant number was set properly");
-			callback(data);
-		});
+	InsertChurch : function(db, id, chrchname, callback){
+		db.collection(collec).updateOne(
+			{"_id", id},
+			{"church", chrchname},
+			function(err, data){
+				assert.equal(null, err);
+				console.log("Church name was added properly");
+				callback(data);
+			});
+	},
+
+	SetStdntNum : function(db, id, stdtnum, callback){
+		db.collection(collec).updateOne(
+			{"_id": id},
+			{"stdtNum": stdtnum},
+			function(err, data){
+				assert.equal(null, err);
+				console.log("Student number was set properly");
+				callback(data);
+			});
+	},
+
+	SetSrvntNum : function(db, id, srvntnum, callback){
+		db.collection(collec).updateOne(
+			{"_id": id},
+			{"srvntNum": srvntnum},
+			function(err, data){
+				assert.equal(null, err);
+				console.log("Servant number was set properly");
+				callback(data);
+			});
+	},
+
+	GetClass : function(db, req){
+		var name = req.query.name || null;
+		var grade = req.query.grade || null;
+		var church = req.query.church || null;
+		var searchObj = {};
+
+		if(name){
+			searchObj.name = name;
+		}
+		if(grade){
+			searchObj.grade = grade;
+		}
+		if(church){
+			searchObj.church = church;
+		}
+
+		var cursor = db.collection(collec).find(searchObj);
+
+		return cursor;
+	}
 }

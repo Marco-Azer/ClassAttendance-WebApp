@@ -8,15 +8,41 @@
         "gender"     : Gender                     (Char(1))*
         "age"        : Age                        (INT)*
         "grade"      : Grade                      (Char(2))*
-        "dob"        : Date Of Birth              (Date)*
+        "dob"        : {                          Date Of Birth
+            "year": yyyy
+            "month": month
+            "day": dd
+        }
         "phone"      : Phone Number               (String)
-        "emergNum"   : Emergency Contanct Number  (String)
-        "emergName" : Emergency Contanct Name    (String)
-        "addr"       : Address                    (String)*
-        "pcode"      : Postal Code                (String)
-        "curClassId" : Current Class ID           (INT References Struct)*
-        "attendance" : Dates attended             (Array of dates)
-        "outreach"   : Dates outreached           (Array of dates)
+        "parents"    :{
+            "father"
+            "fphone"
+            "mother"
+            "mphone"
+        }
+        "addr"       : {
+            "aptNum"
+            "street"
+            "city"
+            "province"
+            "country"
+            "pcode"
+        }                    
+        "class" : {
+            "name"
+            "church"
+            "grade"
+        }           
+        "atndc" : [{                        Dates attended
+            "year"
+            "month"
+            "day"
+        }]
+        "otrch"   :[{                         Dates was outreached
+            "year"
+            "month"
+            "day"
+        }]
     }
 
 */

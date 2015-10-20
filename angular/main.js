@@ -27,6 +27,25 @@ var app = angular.module('main', ['ngResource']);
 // }]);
 
 
+app.controller('ScreenCtrl', ['$scope', function($scope){
+	var LastPage = 'Home';
+	$scope.Show = {
+		'Home' : true,
+		'StudentNew' : false,
+		'StudentSearch' : false,
+		'ServantNew' : false,
+		'ServantSearch' : false,
+		'ClassNew' : false,
+		'ClassSearch' : false
+	};
+	$scope.ShowPage = function(page){
+		$scope.Show[LastPage] = false;
+		$scope.Show[page] = true;
+		LastPage = page;
+	};
+	
+}]);
+
 app.controller('AddStudentCtrl', ['$scope', '$http', function($scope, $http){
 	$scope.submit = function(){
 		$http.post('http://localhost:8080/student', $scope.new).then(
@@ -44,11 +63,11 @@ app.controller('AddStudentCtrl', ['$scope', '$http', function($scope, $http){
 app.controller('AddServantCtrl', ['$scope', '$http', function($scope, $http){
 	$scope.submit = function(){
 		$http.post('http://localhost:8080/servant', $scope.new).then(
-				function(){
+				function(res){
 					$scope.new = {};
 					console.log("Student was inserted");
 				},
-				function(){
+				function(res){
 					console.log("Couldn't insert servant");
 				}
 			);
@@ -216,4 +235,61 @@ app.controller('SearchServantCtrl', ['$scope', '$http', function($scope, $http){
 				console.log("Search is un-successful");
 			});
 	};
+
+	app.controller('AddClassCtrl', ['$scope', '$http', function($scope, $http){
+		$http.post('http://localhost:8080/class', $scope.new).then(
+			function(res){
+				$scope.new = {};
+			},
+			function(res){
+				console.log("Error, Couldnt add class")
+			});
+	}]);
+
+	app.controller('SearchClassCtrl', ['$scope', '$http', function($scope, $http){
+		$scope.ShowNewClass = true;
+		$scope.ShowClass = false;
+		$scope.ShowClasses = false;
+
+		var name = $scope.class.name || null;
+		var church = $scope.class.church || null;
+		var grade = $scope.class.grade || null;
+		var searchObj = {};
+
+		if(name){
+			searchObj.name = name;
+		}
+		if(church){
+			searchObj.church = church;
+		}
+		if(grade){
+			searchObj.grade = grade;
+		}
+
+		var req = {
+			method: 'GET',
+			url: 'http://localhost:8080/class',
+			params: searchObj
+		}
+		
+		$http(req).then(
+			function(res){
+				if(res.data.length == 1){
+					$scope.class = res.data[0]''
+					$scope.ShowNewClass = false;
+					$scope.ShowClass = true;
+					$scope.ShowClasses = false;
+				}
+				else{
+					$scope.classes = res.data;
+					$scope.ShowNewClass = false;
+					$scope.ShowClasses = true;
+					$scope.ShowClass = false;
+				}
+			},
+			function(res){
+				console.log('Search was un-successful');
+			});
+	}]);
+
 }]);
