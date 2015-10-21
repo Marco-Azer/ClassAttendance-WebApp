@@ -1,4 +1,5 @@
-var app = angular.module('main', ['ngResource']);
+
+var app = angular.module('main', []);
 
 // app.factory('dataFac', function($resource){
 // 	var getData = $resource('http://localhost:8080/');
@@ -43,6 +44,17 @@ app.controller('ScreenCtrl', ['$scope', function($scope){
 		$scope.Show[page] = true;
 		LastPage = page;
 	};
+	
+	$scope.days = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', 
+	'14', '15', '16', '17', '18',	'19', '20', '21', '22', '23', '24', '25', '26', '27', '28', 
+	'29', '30', '31'];
+
+	$scope.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+	'August', 'September', 'October', 'Novermber', 'December'];
+
+	$scope.years = [1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
+	2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
+	2013, 2014, 2015];
 	
 }]);
 
@@ -235,25 +247,34 @@ app.controller('SearchServantCtrl', ['$scope', '$http', function($scope, $http){
 				console.log("Search is un-successful");
 			});
 	};
+}]);
 
-	app.controller('AddClassCtrl', ['$scope', '$http', function($scope, $http){
+
+app.controller('AddClassCtrl', ['$scope', '$http', function($scope, $http){
+	$scope.addClass = function(){
 		$http.post('http://localhost:8080/class', $scope.new).then(
 			function(res){
 				$scope.new = {};
 			},
 			function(res){
-				console.log("Error, Couldnt add class")
-			});
-	}]);
+				console.log("Error, Couldnt add class");
+			}
+		);
+	}
+}]);
 
-	app.controller('SearchClassCtrl', ['$scope', '$http', function($scope, $http){
-		$scope.ShowNewClass = true;
-		$scope.ShowClass = false;
-		$scope.ShowClasses = false;
 
-		var name = $scope.class.name || null;
-		var church = $scope.class.church || null;
-		var grade = $scope.class.grade || null;
+
+app.controller('SearchClassCtrl', ['$scope', '$http', function($scope, $http){
+	$scope.ShowNewClass = true;
+	$scope.ShowClass = false;
+	$scope.ShowClasses = false;
+
+	$scope.searchClass = function(){
+
+		var name = $scope.sclass.name || null;
+		var church = $scope.sclass.church || null;
+		var grade = $scope.sclass.grade || null;
 		var searchObj = {};
 
 		if(name){
@@ -275,7 +296,7 @@ app.controller('SearchServantCtrl', ['$scope', '$http', function($scope, $http){
 		$http(req).then(
 			function(res){
 				if(res.data.length == 1){
-					$scope.class = res.data[0]''
+					$scope.class = res.data[0];
 					$scope.ShowNewClass = false;
 					$scope.ShowClass = true;
 					$scope.ShowClasses = false;
@@ -290,6 +311,6 @@ app.controller('SearchServantCtrl', ['$scope', '$http', function($scope, $http){
 			function(res){
 				console.log('Search was un-successful');
 			});
-	}]);
+	}
 
 }]);

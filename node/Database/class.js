@@ -15,6 +15,7 @@
 */
 
 var collec = "class";
+var assert = require('assert');
 
 // Inserts
 module.exports = {
@@ -22,7 +23,9 @@ module.exports = {
 		db.collection(collec).insertOne(cls, function(err, data){
 			assert.equal(null, err);
 			console.log("Class was inserted properly");
-			callback(data);
+			if(callback){
+				callback(data);
+			}
 		});
 	},
 
@@ -34,38 +37,38 @@ module.exports = {
 		})
 	},
 
-	InsertChurch : function(db, id, chrchname, callback){
-		db.collection(collec).updateOne(
-			{"_id", id},
-			{"church", chrchname},
-			function(err, data){
-				assert.equal(null, err);
-				console.log("Church name was added properly");
-				callback(data);
-			});
-	},
+	// InsertChurch : function(db, id, chrchname, callback){
+	// 	db.collection(collec).updateOne(
+	// 		{"_id", id},
+	// 		{"church", chrchname},
+	// 		function(err, data){
+	// 			assert.equal(null, err);
+	// 			console.log("Church name was added properly");
+	// 			callback(data);
+	// 		});
+	// },
 
-	SetStdntNum : function(db, id, stdtnum, callback){
-		db.collection(collec).updateOne(
-			{"_id": id},
-			{"stdtNum": stdtnum},
-			function(err, data){
-				assert.equal(null, err);
-				console.log("Student number was set properly");
-				callback(data);
-			});
-	},
+	// SetStdntNum : function(db, id, stdtnum, callback){
+	// 	db.collection(collec).updateOne(
+	// 		{"_id": id},
+	// 		{"stdtNum": stdtnum},
+	// 		function(err, data){
+	// 			assert.equal(null, err);
+	// 			console.log("Student number was set properly");
+	// 			callback(data);
+	// 		});
+	// },
 
-	SetSrvntNum : function(db, id, srvntnum, callback){
-		db.collection(collec).updateOne(
-			{"_id": id},
-			{"srvntNum": srvntnum},
-			function(err, data){
-				assert.equal(null, err);
-				console.log("Servant number was set properly");
-				callback(data);
-			});
-	},
+	// SetSrvntNum : function(db, id, srvntnum, callback){
+	// 	db.collection(collec).updateOne(
+	// 		{"_id": id},
+	// 		{"srvntNum": srvntnum},
+	// 		function(err, data){
+	// 			assert.equal(null, err);
+	// 			console.log("Servant number was set properly");
+	// 			callback(data);
+	// 		});
+	// },
 
 	GetClass : function(db, req){
 		var name = req.query.name || null;
