@@ -94,11 +94,18 @@
                 </select>
             </div>
             <div class="form-group form-inline">
-                <select class="form-control" ng-model="new.dob.day" placeholder="Day of Birth">
+                <select class="form-control" ng-model="new.dob.month" ng-change="pickMonth(new.dob.month)">
+                    <option value="">--Month of Birth--</option>
+                    <option ng-repeat="month in months" value="{{month}}" >{{month}}</option>
+                </select>
+                <select class="form-control" ng-model="new.dob.day">
+                    <option value="">--Day Of Birth--</option>
                     <option ng-repeat="day in days" value="{{day}}" >{{day}}</option>
                 </select>
-                <input type="text" class="form-control" ng-model="new.dob.month" placeholder="Month of Birth"/>
-                <input type="text" class="form-control" ng-model="new.dob.year" placeholder="Year of birth"/>
+                <select class="form-control" ng-model="new.dob.year" placeholder="Year of birth">
+                    <option value="">--Year of Birth--</option>
+                    <option ng-repeat="year in years" value="{{year}}" >{{year}}</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="new.phone" placeholder="Phone number"/>
@@ -113,6 +120,8 @@
                 <input type="text" class="form-control" ng-model="new.addr.aptNum" placeholder="Apt. Number"/>
                 <input type="text" class="form-control" ng-model="new.addr.street" placeholder="Street Name"/>
                 <input type="text" class="form-control" ng-model="new.addr.city" placeholder="City"/>
+            </div>
+            <div class="form-group form-inline">
                 <input type="text" class="form-control" ng-model="new.addr.province" placeholder="Province"/>
                 <input type="text" class="form-control" ng-model="new.addr.country" placeholder="Country"/>
                 <input type="text" class="form-control" ng-model="new.addr.pcode" placeholder="Postal Code"/>
@@ -166,9 +175,18 @@
                     </select>
                 </div>
                 <div class="form-group form-inline">
-                    <input type="text" class="form-control" ng-model="stdnt.dob.day" placeholder="Day of Birth"/>
-                    <input type="text" class="form-control" ng-model="stdnt.dob.month" placeholder="Month of Birth"/>
-                    <input type="text" class="form-control" ng-model="stdnt.dob.year" placeholder="Year of birth"/>
+                    <select class="form-control" ng-model="stdnt.dob.month" ng-change="pickMonth(stdnt.dob.month)">
+                        <option value="">--Month of Birth--</option>
+                        <option ng-repeat="month in months" value="{{month}}" >{{month}}</option>
+                    </select>
+                    <select class="form-control" ng-model="stdnt.dob.day">
+                        <option value="">--Day Of Birth--</option>
+                        <option ng-repeat="day in days" value="{{day}}" >{{day}}</option>
+                    </select>
+                    <select class="form-control" ng-model="stdnt.dob.year" placeholder="Year of birth">
+                        <option value="">--Year of Birth--</option>
+                        <option ng-repeat="year in years" value="{{year}}" >{{year}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="radio-inline">
@@ -184,7 +202,7 @@
 
         <div id="ViewOneStudent" class="col-md-12" ng-show="ShowOne">
             <div class="col-md-6">
-                <p>Image</p>
+                <img src="imgs/Unknown-person.gif" class="img-thumbnail">
             </div>
             <div class="col=md-6">
                 <h3>Personal Info</h3>
@@ -245,7 +263,7 @@
                     <th>Class</th>
                 </tr>
                 <tr ng-repeat="student in students">
-                    <td><img src="{{student.picture}}" class="img-thumbnail"></td>
+                    <td><div><img src="imgs/Unknown-person.gif" class="img-thumbnail" width="60" length= "60"></div></td>
                     <td>{{student.fname}}</td>
                     <td>{{student.lname}}</td>
                     <td>{{student.gender}}</td>
@@ -291,9 +309,18 @@
                     </select>
                 </div>
                 <div class="form-group form-inline">
-                    <input type="text" class="form-control" ng-model="new.dob.day" placeholder="Day of Birth"/>
-                    <input type="text" class="form-control" ng-model="new.dob.month" placeholder="Month of Birth"/>
-                    <input type="text" class="form-control" ng-model="new.dob.year" placeholder="Year of birth"/>
+                    <select class="form-control" ng-model="new.dob.month" ng-change="pickMonth(new.dob.month)">
+                        <option value="">--Month of Birth--</option>
+                        <option ng-repeat="month in months" value="{{month}}" >{{month}}</option>
+                    </select>
+                    <select class="form-control" ng-model="new.dob.day">
+                        <option value="">--Day Of Birth--</option>
+                        <option ng-repeat="day in days" value="{{day}}" >{{day}}</option>
+                    </select>
+                    <select class="form-control" ng-model="new.dob.year" placeholder="Year of birth">
+                        <option value="">--Year of Birth--</option>
+                        <option ng-repeat="year in years" value="{{year}}" >{{year}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" ng-model="new.phone" placeholder="Phone number"/>
@@ -302,6 +329,8 @@
                     <input type="text" class="form-control" ng-model="new.addr.apt" placeholder="Apt. Number"/>
                     <input type="text" class="form-control" ng-model="new.addr.street" placeholder="Street Name"/>
                     <input type="text" class="form-control" ng-model="new.addr.city" placeholder="City"/>
+                </div>
+                <div class="form-group form-inline">
                     <input type="text" class="form-control" ng-model="new.addr.province" placeholder="Province"/>
                     <input type="text" class="form-control" ng-model="new.addr.country" placeholder="Country"/>
                     <input type="text" class="form-control" ng-model="new.addr.pcode" placeholder="Postal Code"/>
@@ -369,7 +398,7 @@
 
          <div id="ViewServant">
             <div class="col-md-6">
-                <p>Image</p>
+                <img src="imgs/Unknown-person.gif" class="img-thumbnail">
             </div>
             <div class="col=md-6">
                 <h3>Personal Info</h3>

@@ -39,15 +39,39 @@ app.controller('ScreenCtrl', ['$scope', function($scope){
 		'ClassNew' : false,
 		'ClassSearch' : false
 	};
+
 	$scope.ShowPage = function(page){
 		$scope.Show[LastPage] = false;
 		$scope.Show[page] = true;
 		LastPage = page;
 	};
 	
-	$scope.days = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', 
+	var thirtyone = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', 
 	'14', '15', '16', '17', '18',	'19', '20', '21', '22', '23', '24', '25', '26', '27', '28', 
 	'29', '30', '31'];
+
+	var thirty = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', 
+	'14', '15', '16', '17', '18',	'19', '20', '21', '22', '23', '24', '25', '26', '27', '28', 
+	'29', '30'];
+
+	var twentyeight = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', 
+	'14', '15', '16', '17', '18',	'19', '20', '21', '22', '23', '24', '25', '26', '27', '28']
+
+	$scope.pickMonth = function(month){
+		if(month == ""){
+			$scope.days = [];
+		}
+		else if(month === "January" || month == "March" || month == "May" || month == "July" || month == "August" ||
+			month == "October" || month == "December"){
+			$scope.days = thirtyone;
+		}
+		else if(month == "February"){
+			$scope.days = twentyeight;
+		}
+		else{
+			$scope.days = thirty;
+		}
+	}
 
 	$scope.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
 	'August', 'September', 'October', 'Novermber', 'December'];
