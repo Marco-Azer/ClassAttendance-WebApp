@@ -1,0 +1,135 @@
+
+
+<div class="container" ng-show="Show.StudentSearch" ng-controller="SearchStudentCtrl">
+    <div id="SearchStudent" class="col-md-12" ng-show="ShowSearch">
+        <h1>Search Student</h1>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="stdnt.fname" placeholder="First Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="stdnt.lname" placeholder="Last Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="stdnt.mname" placeholder="Middle Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-mode="stdnt.age" placeholder="Age"/>
+            </div>
+            <div class="form-group">
+                <select name="" class="form-control" ng-model="stdnt.grade">
+                    <option value="">--Select Grade--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <div class="form-group form-inline">
+                <select class="form-control" ng-model="stdnt.dob.month" ng-change="pickMonth(stdnt.dob.month)">
+                    <option value="">--Month of Birth--</option>
+                    <option ng-repeat="month in months" value="{{month}}" >{{month}}</option>
+                </select>
+                <select class="form-control" ng-model="stdnt.dob.day">
+                    <option value="">--Day Of Birth--</option>
+                    <option ng-repeat="day in days" value="{{day}}" >{{day}}</option>
+                </select>
+                <select class="form-control" ng-model="stdnt.dob.year" placeholder="Year of birth">
+                    <option value="">--Year of Birth--</option>
+                    <option ng-repeat="year in years" value="{{year}}" >{{year}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="radio-inline">
+                    <input type="radio" name="gender" ng-model="stdnt.gender" value="Male"> Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" ng-model="stdnt.gender" value="Female"> Female
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="search()">Submit</button>
+        </form>
+    </div>
+
+    <div id="ViewOneStudent" class="col-md-12" ng-show="ShowOne">
+        <div class="col-md-6">
+            <img src="imgs/Unknown-person.gif" class="img-thumbnail">
+        </div>
+        <div class="col=md-6">
+            <h3>Personal Info</h3>
+            <ul>
+                <li>{{student.fname}} {{student.mname}} {{student.lname}}</li>
+                <li>{{student.gender}}</li>
+                <li>{{student.age}}</li>
+                <li>{{student.dob.day}} {{student.dob.month}} {{student.dob.year}}</li>
+                <li>{{student.grade}}</li>
+                <li>{{student.phone}}</li>
+                <li>{{student.addr.aptNum}} {{student.addr.street}} {{student.addr.city}}, {{student.addr.province}} {{student.addr.country}}</li>
+                <li>{{student.emergName}}</li>
+                <li>{{student.emergNum}}</li>
+            </ul>
+            
+            <h3>Attendance</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Day</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                </tr>
+                <tr ng-repeat="attend in student.attendance">
+                    <td>{{attend.day}}</td>
+                    <td>{{attend.month}}</td>
+                    <td>{{attend.year}}</td>
+                </tr>
+            </table>
+
+            <h3>Outreach</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Day</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                </tr>
+                <tr ng-repeat="outreach in student.outreach">
+                    <td>{{outreach.day}}</td>
+                    <td>{{outreach.month}}</td>
+                    <td>{{outreach.year}}</td>
+                </tr>
+            </table>
+
+            <h3>Notes</h3>
+            <p>Notes</p>
+        </div>
+    </div>
+
+    <div id="ViewMultipleStudents" ng-show="ShowMany">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>Class</th>
+            </tr>
+            <tr ng-repeat="student in students">
+                <td><div><img src="imgs/Unknown-person.gif" class="img-thumbnail" width="60" length= "60"></div></td>
+                <td>{{student.fname}}</td>
+                <td>{{student.lname}}</td>
+                <td>{{student.gender}}</td>
+                <td>{{student.age}}</td>
+                <td>{{student.grade}}</td>
+                <td>{{student.class}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+
+
+<div class="container" ng-controller="SearchClassCtrl" ng-show="Show.ClassSearch">
+    <div id="SearchClass" ng-show="ShowNewClass">
+        <form>
+            <div class="form-group">
+                <input class="form-control" type="text" ng-model="sclass.name" placeholder="Class Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" ng-model="sclass.church" placeholder="Church Name">
+            </div>
+            <div class="form-group">
+                <select class="form-control" ng-model="sclass.grade">
+                    <option value="">--Select Grade--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" ng-click="searchClass()">Search Class</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="OneClass" ng-show="ShowClass">
+        <ul>
+            <li>{{class.name}}</li>
+            <li>{{class.church}}</li>
+            <li>{{class.grade}}</li>
+            <li>{{class.stdntNum}}</li>
+            <li>{{class.srvntNum}}</li>
+        </ul>
+    </div>        
+
+    <div ng-show="ShowClasses">
+        <table class="table table-stripped">
+            <tr>
+                <th>Class Name</th>
+                <th>Church</th>
+                <th>Grade</th>
+                <th>Number of Students</th>
+                <th>Number of Servants</th>
+            </tr>
+            <tr ng-repeat = "class in classes">
+                <td>{{class.name}}</td>
+                <td>{{class.church}}</td>
+                <td>{{class.grade}}</td>
+                <td>{{class.stdntNum}}</td>
+                <td>{{class.srvntNum}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="AddAttendance" ng-show="ShowAttendance">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>Class</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="student in students">
+                <td><img src="{{student.picture}}" class="img-thumbnail"></td>
+                <td>{{student.fname}}</td>
+                <td>{{student.lname}}</td>
+                <td>{{student.gender}}</td>
+                <td>{{student.age}}</td>
+                <td>{{student.grade}}</td>
+                <td>{{student.class}}</td>
+                <td><button>Attended</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

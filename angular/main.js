@@ -1,5 +1,5 @@
 
-var app = angular.module('main', []);
+var app = angular.module('main', ['ngRoute']);
 
 // app.factory('dataFac', function($resource){
 // 	var getData = $resource('http://localhost:8080/');
@@ -27,6 +27,18 @@ var app = angular.module('main', []);
 		
 // }]);
 
+
+app.config(function($routeProvider){
+	$routeProvider
+	.when('/', {
+		templateUrl: 'pages/home.html',
+		controller: ''
+	})
+	.when('/addStudent', {
+		templateUrl: 'pages/AddStudent.html'.
+		controller: 'AddStudentCtrl'
+	})
+});
 
 app.controller('ScreenCtrl', ['$scope', function($scope){
 	var LastPage = 'Home';

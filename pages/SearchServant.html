@@ -1,0 +1,72 @@
+<div class="container" ng-show="Show.ServantSearch">
+    <div>
+        <h1>Search Servants</h1>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="First Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Last Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Middle Name"/>
+            </div>
+            <div class="form-group">
+                <select name="" class="form-control">
+                    <option value="0">Grade</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Class Name"/>
+            </div>
+            <div class="form-group">
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="m"> Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="f"> Female
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+     <div id="ViewServant">
+        <div class="col-md-6">
+            <img src="imgs/Unknown-person.gif" class="img-thumbnail">
+        </div>
+        <div class="col=md-6">
+            <h3>Personal Info</h3>
+            <ul>
+                <li>Full Name</li>
+                <li>Gender</li>
+                <li>Age</li>
+                <li>DOB</li>
+                <li>Grade</li>
+                <li>Phone number</li>
+                <li>Address</li>
+            </ul>
+            
+            <h3>Attendance</h3>
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

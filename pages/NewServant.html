@@ -1,0 +1,77 @@
+
+
+<div class="container" ng-show="Show.ServantNew" ng-controller="AddServantCtrl">
+    <div id="Add Servant">
+        <h1>Add Servant</h1>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="new.fname" placeholder="First Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="new.lname" placeholder="Last Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="new.mname" placeholder="Middle Name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="new.age" placeholder="Age"/>
+            </div>
+            <div class="form-group">
+                <select name="" class="form-control" ng-model="new.grade">
+                    <option value="">--Select Grade--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <div class="form-group form-inline">
+                <select class="form-control" ng-model="new.dob.month" ng-change="pickMonth(new.dob.month)">
+                    <option value="">--Month of Birth--</option>
+                    <option ng-repeat="month in months" value="{{month}}" >{{month}}</option>
+                </select>
+                <select class="form-control" ng-model="new.dob.day">
+                    <option value="">--Day Of Birth--</option>
+                    <option ng-repeat="day in days" value="{{day}}" >{{day}}</option>
+                </select>
+                <select class="form-control" ng-model="new.dob.year" placeholder="Year of birth">
+                    <option value="">--Year of Birth--</option>
+                    <option ng-repeat="year in years" value="{{year}}" >{{year}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="new.phone" placeholder="Phone number"/>
+            </div>
+            <div class="form-group form-inline">
+                <input type="text" class="form-control" ng-model="new.addr.apt" placeholder="Apt. Number"/>
+                <input type="text" class="form-control" ng-model="new.addr.street" placeholder="Street Name"/>
+                <input type="text" class="form-control" ng-model="new.addr.city" placeholder="City"/>
+            </div>
+            <div class="form-group form-inline">
+                <input type="text" class="form-control" ng-model="new.addr.province" placeholder="Province"/>
+                <input type="text" class="form-control" ng-model="new.addr.country" placeholder="Country"/>
+                <input type="text" class="form-control" ng-model="new.addr.pcode" placeholder="Postal Code"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="new.className"placeholder="Class Name"/>
+            </div>
+            <div class="form-group">
+                <label class="radio-inline">
+                    <input type="radio" name="gender" ng-model="new.gender" value="M"> Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" ng-model="new.gender" value="F"> Female
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="submit()">Submit</button>
+        </form>
+    </div>
+</div>
