@@ -28,16 +28,17 @@ var app = angular.module('main', ['ngRoute']);
 // }]);
 
 
-app.config(function($routeProvider){
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+	$locationProvider.html5Mode(true);
 	$routeProvider
 	.when('/', {
 		templateUrl: '../pages/home.html'
 	})
-	.when('/addStudent', {
+	.when('/NewStudent', {
 		templateUrl: '../pages/NewStudent.html',
 		controller: 'AddStudentCtrl'
 	})
-	.when('/searchStudent',{
+	.when('/SearchStudent',{
 		templateUrl: '../pages/SearchStudent.html',
 		controller: 'SearchStudentCtrl'
 	})
@@ -50,32 +51,17 @@ app.config(function($routeProvider){
 		controller: 'SearchServantCtrl'
 	})
 	.when('/NewClass', {
-		templateUrl: '../pages/NewClass.html'
+		templateUrl: '../pages/NewClass.html',
 		controller: 'AddClassCtrl'
 	})
 	.when('/SearchClass', {
 		templateUrl: '../pages/SearchClass.html',
 		controller: 'SearchClassCtrl'
 	})
-});
 
-app.controller('ScreenCtrl', ['$scope', function($scope){
-	var LastPage = 'Home';
-	$scope.Show = {
-		'Home' : true,
-		'StudentNew' : false,
-		'StudentSearch' : false,
-		'ServantNew' : false,
-		'ServantSearch' : false,
-		'ClassNew' : false,
-		'ClassSearch' : false
-	};
+}]);
 
-	$scope.ShowPage = function(page){
-		$scope.Show[LastPage] = false;
-		$scope.Show[page] = true;
-		LastPage = page;
-	};
+app.controller('MainCtrl', ['$scope', function($scope){
 	
 	var thirtyone = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', 
 	'14', '15', '16', '17', '18',	'19', '20', '21', '22', '23', '24', '25', '26', '27', '28', 
