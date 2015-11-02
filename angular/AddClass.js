@@ -1,7 +1,7 @@
-(function(){
-	var app = angular.module('AddClass', []);
 
-	app.controller('AddClassCtrl', ['$scope', '$http', function($scope, $http){
+angular.module('AddClass', [])
+
+	.controller('AddClassCtrl', ['$scope', '$http', function($scope, $http){
 		$scope.addClass = function(){
 			$http.post('http://localhost:8080/class', $scope.new).then(
 				function(res){
@@ -13,4 +13,3 @@
 			);
 		}
 	}]);
-})();

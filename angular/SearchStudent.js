@@ -1,7 +1,6 @@
-(function(){
-	var app = angular.module('SearchStudent', []);
+angular.module('SearchStudent', [])
 
-	app.controller('SearchStudentCtrl', ['$scope', '$http', function($scope, $http){
+	.controller('SearchStudentCtrl', ['$scope', '$http', function($scope, $http){
 
 		$scope.ShowSearch = true;
 		$scope.ShowOne = false;
@@ -81,4 +80,3 @@
 				});
 		};
 	}]);
-})();

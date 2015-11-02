@@ -1,14 +1,13 @@
-(function(){
-	var app = angular.module('main', 
+angular.module('main', 
 		['ngRoute',
 		'AddStudent',
 		'AddServant',
 		'SearchStudent',
 		'SearchServant',
 		'AddClass',
-		'SearchClass']);
+		'SearchClass'])
 
-	app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 		$locationProvider.html5Mode(true);
 		$routeProvider
 		.when('/', {
@@ -38,9 +37,9 @@
 			templateUrl: '../pages/SearchClass.html',
 			controller: 'SearchClassCtrl'
 		})
-	}]);
+	}])
 
-	app.controller('MainCtrl', ['$scope', function($scope){
+	.controller('MainCtrl', ['$scope', function($scope){
 	
 		var thirtyone = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', 
 		'14', '15', '16', '17', '18',	'19', '20', '21', '22', '23', '24', '25', '26', '27', '28', 
@@ -77,5 +76,3 @@
 		}
 	
 	}]);
-
-})();

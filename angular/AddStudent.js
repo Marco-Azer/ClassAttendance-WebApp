@@ -1,8 +1,6 @@
-(function(){
+angular.module('AddStudent', [])
 
-	var app = angular.module('AddStudent', []);
-
-	app.controller('AddStudentCtrl', ['$scope', '$http', function($scope, $http){
+	.controller('AddStudentCtrl', ['$scope', '$http', function($scope, $http){
 		$scope.submit = function(){
 			$http.post('http://localhost:8080/student', $scope.new).then(
 				function(){
@@ -15,4 +13,3 @@
 			);
 		}
 	}]);
-})();

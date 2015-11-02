@@ -1,7 +1,7 @@
-(function(){
-	var app = angular.module('AddServant', []);
 
-	app.controller('AddServantCtrl', ['$scope', '$http', function($scope, $http){
+angular.module('AddServant', [])
+
+	.controller('AddServantCtrl', ['$scope', '$http', function($scope, $http){
 		$scope.submit = function(){
 			$http.post('http://localhost:8080/servant', $scope.new).then(
 				function(res){
@@ -14,4 +14,3 @@
 			);
 		}
 	}]);
-})();

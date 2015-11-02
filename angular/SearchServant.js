@@ -1,7 +1,6 @@
-(function(){
-	var app = angular.module('SearchServant', []);
+angular.module('SearchServant', [])
 
-	app.controller('SearchServantCtrl', ['$scope', '$http', function($scope, $http){
+	.controller('SearchServantCtrl', ['$scope', '$http', function($scope, $http){
 
 		$scope.ShowSearch = true;
 		$scope.ShowOne = false;
@@ -82,4 +81,3 @@
 			);
 		};
 	}]);
-})();

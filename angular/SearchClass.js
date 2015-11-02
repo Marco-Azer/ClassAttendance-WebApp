@@ -1,7 +1,6 @@
-(function(){
-	var app = angular.module('SearchClass', []);
+angular.module('SearchClass', [])
 
-	app.controller('SearchClassCtrl', ['$scope', '$http', function($scope, $http){
+	.controller('SearchClassCtrl', ['$scope', '$http', function($scope, $http){
 		$scope.ShowNewClass = true;
 		$scope.ShowClass = false;
 		$scope.ShowClasses = false;
@@ -48,6 +47,4 @@
 					console.log('Search was un-successful');
 				});
 		}
-
 	}]);
-})();
