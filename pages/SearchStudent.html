@@ -33,6 +33,12 @@
                     <option value="12">12</option>
                 </select>
             </div>
+            <div class="form-group">
+                <select class="form-control" ng-model="stdnt.class">
+                    <option value="">--Select Class--</option>
+                    <option ng-repeat="class in session.classes" value="{{class.name}}">{{class.name}}</option>
+                </select>
+            </div>
             <div class="form-group form-inline">
                 <select class="form-control" ng-model="stdnt.dob.month" ng-change="pickMonth(stdnt.dob.month)">
                     <option value="">--Month of Birth--</option>

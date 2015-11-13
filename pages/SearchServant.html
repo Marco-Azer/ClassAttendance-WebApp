@@ -29,7 +29,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Class Name"/>
+                <select class="form-control">
+                    <option value="">--Select Class--</option>
+                    <option ng-repeat="class in session.classes" value="{{class.name}}">{{class.name}}</option>
+                </select>
             </div>
             <div class="form-group">
                 <label class="radio-inline">
