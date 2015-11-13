@@ -1,45 +1,4 @@
-angular.module('main', 
-		['ngRoute',
-		'AddStudent',
-		'AddServant',
-		'SearchStudent',
-		'SearchServant',
-		'AddClass',
-		'SearchClass'])
-
-	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
-		$locationProvider.html5Mode(true);
-		$routeProvider
-		.when('/', {
-			templateUrl: '../pages/home.html'
-		})
-		.when('/NewStudent', {
-			templateUrl: '../pages/NewStudent.html',
-			controller: 'AddStudentCtrl'
-		})
-		.when('/SearchStudent',{
-			templateUrl: '../pages/SearchStudent.html',
-			controller: 'SearchStudentCtrl'
-		})
-		.when('/NewServant', {
-			templateUrl: '../pages/NewServant.html',
-			controller: 'SearchServantCtrl'
-		})
-		.when('/SearchServant', {
-			templateUrl: '../pages/SearchServant.html',
-			controller: 'SearchServantCtrl'
-		})
-		.when('/NewClass', {
-			templateUrl: '../pages/NewClass.html',
-			controller: 'AddClassCtrl'
-		})
-		.when('/SearchClass', {
-			templateUrl: '../pages/SearchClass.html',
-			controller: 'SearchClassCtrl'
-		})
-	}])
-
-	.controller('MainCtrl', ['$scope', function($scope){
+app.controller('MainCtrl', ['$scope', function($scope){
 	
 		var thirtyone = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', 
 		'14', '15', '16', '17', '18',	'19', '20', '21', '22', '23', '24', '25', '26', '27', '28', 
