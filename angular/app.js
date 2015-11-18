@@ -30,4 +30,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: '../pages/SearchClass.html',
 		controller: 'SearchClassCtrl'
 	})
+	.when('/ViewProfile',{
+		templateUrl: '../pages/ViewProfile.html',
+		controller: 'ViewProfileCtrl'
 }]);

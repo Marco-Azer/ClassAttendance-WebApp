@@ -1,8 +1,4 @@
-app.controller('SearchStudentCtrl', ['$scope', '$http', function($scope, $http){
-
-	$scope.ShowSearch = true;
-	$scope.ShowOne = false;
-	$scope.ShowMany = false;
+app.controller('SearchStudentCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
 
 	$scope.search = function() {
 		var fname = $scope.stdnt.fname || null;
@@ -61,20 +57,23 @@ app.controller('SearchStudentCtrl', ['$scope', '$http', function($scope, $http){
 			function (res) {
 				if(res.data.length == 1){
 					$scope.student = res.data[0];
-					$scope.ShowSearch = false;
-					$scope.ShowOne = true;
-					$scope.ShowMany = false;
+					console.log($scope.student);
+					$location.path('/ViewProfile').search($scope.student);
+					// $scope.ShowSearch = false;
+					// $scope.ShowOne = true;
+					// $scope.ShowMany = false;
 				}
 				else{
 					$scope.students = res.data;
-					$scope.ShowSearch = false;
-					$scope.ShowMany = true;
-					$scope.ShowOne = false;
+					// $scope.ShowSearch = false;
+					// $scope.ShowMany = true;
+					// $scope.ShowOne = false;
 
 				}
 			},
 			function (res) {
 				console.log("Search is un-successful");
-			});
+			}
+		);
 	};
 }]);
