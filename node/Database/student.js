@@ -287,54 +287,17 @@ module.exports = {
 
     // /stdnt?fname=value1&lname=value2&dob=value3
     GetStudent : function(db, req){
-        var fname = req.query.fname || null;
-        var lname = req.query.lname || null;
-        var mname = req.query.mname || null;
-        var gender = req.query.gender || null;
-        var age = req.query.age || null;
-        var yob = req.query.yob || null;
-        var mob = req.query.mob || null;
-        var dob = req.query.dob || null;
-        var myclass = req.query.class || null;
-        var grade = req.query.grade || null;
-        var searchObj = {};
 
-        if(fname){
-            searchObj.fname = fname;
-        }
-        if(lname){
-            searchObj.lname = lname;
-        }
-        if(mname){
-            searchObj.mname = mname;
-        }
-        if(age){
-            searchObj.age = age;
-        }
-        if(gender){
-            searchObj.gender = gender;
-        }
-        if(yob){
-            searchObj.dob.year = yob;
-        }
-        if(mob){
-            searchObj.dob.month = mob;
-        }
-        if(dob){
-            searchObj.dob.day = dob;
-        }
-        if(fname){
-            searchObj.fname = fname;
-        }
-        if(myclass){
-            searchObj.class = myclass;
-        }
-        if(grade){
-            searchObj.grade = grade;
-        }
+        var cursor = db.collection(collec).find(req.query);
 
-        var cursor = db.collection(collec).find(searchObj);
+        return cursor;
+    },
 
+    GetStudentById : function(db, req){
+        var id = req.params.id;
+        var cursor = db.collection(collec).find({
+            "_id" : ObjectID(id)
+        });
         return cursor;
     },
 

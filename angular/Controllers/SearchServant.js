@@ -1,8 +1,4 @@
-app.controller('SearchServantCtrl', ['$scope', '$http', function($scope, $http){
-
-	$scope.ShowSearch = true;
-	$scope.ShowOne = false;
-	$scope.ShowMany = false;
+app.controller('SearchServantCtrl', ['$scope', '$location','Profile', function($scope, $location, Profile){
 
 	$scope.search = function() {
 		var fname = $scope.srvnt.fname || null;
@@ -51,31 +47,18 @@ app.controller('SearchServantCtrl', ['$scope', '$http', function($scope, $http){
 			searchObj.grade = grade;
 		}
 
-		var req = {
-			method: 'GET',
-			url: 'http://localhost:8080/servant',
-			params: searchObj
-		};
-
-		$http(req).then(
-			function (res) {
-				if(res.data.length == 1){
-					$scope.servant = res.data[0];
-					$scope.ShowSearch = false;
-					$scope.ShowOne = true;
-					$scope.ShowMany = false;
-				}
-				else{
-					$scope.servant = res.data;
-					$scope.ShowSearch = false;
-					$scope.ShowMany = true;
-					$scope.ShowOne = false;
-
-				}
-			},
-			function (res) {
-				console.log("Search is un-successful");
+		Profile.getServantProfile(searchObj, function(err, data){
+			if(err){
+				console.log(err);
 			}
-		);
+			else{
+				if(data.length == 1){
+					$location.path('/ViewProfile');
+				}
+				else if(data.length > 1){
+					$location.path('/ViewProfiles');
+				}
+			}
+		});
 	};
 }]);

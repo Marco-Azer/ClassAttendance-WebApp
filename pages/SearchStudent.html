@@ -1,7 +1,5 @@
-
-
 <div class="container" ng-controller="SearchStudentCtrl">
-    <div id="SearchStudent" class="col-md-12" ng-show="ShowSearch">
+    <div>
         <h1>Search Student</h1>
         <form>
             <div class="form-group">
@@ -63,79 +61,5 @@
             </div>
             <button type="submit" class="btn btn-primary" ng-click="search()">Submit</button>
         </form>
-    </div>
-
-    <div id="ViewOneStudent" class="col-md-12" ng-show="ShowOne">
-        <div class="col-md-6">
-            <img src="imgs/Unknown-person.gif" class="img-thumbnail">
-        </div>
-        <div class="col=md-6">
-            <h3>Personal Info</h3>
-            <ul>
-                <li>{{student.fname}} {{student.mname}} {{student.lname}}</li>
-                <li>{{student.gender}}</li>
-                <li>{{student.age}}</li>
-                <li>{{student.dob.day}} {{student.dob.month}} {{student.dob.year}}</li>
-                <li>{{student.grade}}</li>
-                <li>{{student.phone}}</li>
-                <li>{{student.addr.aptNum}} {{student.addr.street}} {{student.addr.city}}, {{student.addr.province}} {{student.addr.country}}</li>
-                <li>{{student.emergName}}</li>
-                <li>{{student.emergNum}}</li>
-            </ul>
-            
-            <h3>Attendance</h3>
-            <table class="table table-striped">
-                <tr>
-                    <th>Day</th>
-                    <th>Month</th>
-                    <th>Year</th>
-                </tr>
-                <tr ng-repeat="attend in student.attendance">
-                    <td>{{attend.day}}</td>
-                    <td>{{attend.month}}</td>
-                    <td>{{attend.year}}</td>
-                </tr>
-            </table>
-
-            <h3>Outreach</h3>
-            <table class="table table-striped">
-                <tr>
-                    <th>Day</th>
-                    <th>Month</th>
-                    <th>Year</th>
-                </tr>
-                <tr ng-repeat="outreach in student.outreach">
-                    <td>{{outreach.day}}</td>
-                    <td>{{outreach.month}}</td>
-                    <td>{{outreach.year}}</td>
-                </tr>
-            </table>
-
-            <h3>Notes</h3>
-            <p>Notes</p>
-        </div>
-    </div>
-
-    <div id="ViewMultipleStudents" ng-show="ShowMany">
-        <table class="table">
-            <tr>
-                <th></th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Gender</th>
-                <th>Age</th>
-                <th>Grade</th>
-                <th>Class</th>
-            </tr>
-            <tr ng-repeat="student in students">
-                <td><div><img src="imgs/Unknown-person.gif" class="img-thumbnail" width="60" length= "60"></div></td>
-                <td>{{student.fname}}</td>
-                <td>{{student.lname}}</td>
-                <td>{{student.gender}}</td>
-                <td>{{student.age}}</td>
-                <td>{{student.grade}}</td>
-                <td>{{student.class}}</td>
-            </tr>
-        </table>
     </div>
 </div>

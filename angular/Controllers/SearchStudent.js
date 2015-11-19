@@ -1,8 +1,5 @@
-app.controller('SearchStudentCtrl', ['$scope', '$http', function($scope, $http){
-
-	$scope.ShowSearch = true;
-	$scope.ShowOne = false;
-	$scope.ShowMany = false;
+app.controller('SearchStudentCtrl', ['$scope', '$http', '$location','Profile', 
+	function($scope, $http, $location, Profile){
 
 	$scope.search = function() {
 		var fname = $scope.stdnt.fname || null;
@@ -51,30 +48,18 @@ app.controller('SearchStudentCtrl', ['$scope', '$http', function($scope, $http){
 			searchObj.grade = grade;
 		}
 
-		var req = {
-			method: 'GET',
-			url: 'http://localhost:8080/student',
-			params: searchObj
-		};
-
-		$http(req).then(
-			function (res) {
-				if(res.data.length == 1){
-					$scope.student = res.data[0];
-					$scope.ShowSearch = false;
-					$scope.ShowOne = true;
-					$scope.ShowMany = false;
+		Profile.getStudentProfile(searchObj, function(err, data){
+			if(err){
+				console.log(err);
+			}
+			else{
+				if(data.length == 1){
+					$location.path('/ViewProfile');
 				}
-				else{
-					$scope.students = res.data;
-					$scope.ShowSearch = false;
-					$scope.ShowMany = true;
-					$scope.ShowOne = false;
-
+				else if(data.length > 1){
+					$location.path('/ViewProfiles');
 				}
-			},
-			function (res) {
-				console.log("Search is un-successful");
-			});
+			}
+		});
 	};
 }]);

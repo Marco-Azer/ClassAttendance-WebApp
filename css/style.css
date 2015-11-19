@@ -1,3 +1,7 @@
-/**{
-	border:1px solid red;
-}*/
+tr:hover{
+	background-color: grey;
+}
+
+td{
+	cursor: pointer;
+}

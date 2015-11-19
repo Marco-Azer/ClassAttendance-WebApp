@@ -1,0 +1,23 @@
+<div class="container" ng-controller="ViewProfilesCtrl">
+    <h1>Results Matched</h1>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>Class</th>
+        </tr>
+        <tr ng-repeat="Person in people" ng-click="viewOne(Person._id)">
+            <td><div><img src="imgs/Unknown-person.gif" class="img-thumbnail" width="60" length= "60"></div></td>
+            <td>{{Person.fname}}</td>
+            <td>{{Person.lname}}</td>
+            <td>{{Person.gender}}</td>
+            <td>{{Person.age}}</td>
+            <td>{{Person.grade}}</td>
+            <td>{{Person.class}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,52 @@
+<div class="container" ng-controller="ViewProfileCtrl">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <img src="imgs/Unknown-person.gif" class="img-thumbnail">
+        </div>
+        <div class="col=md-6">
+            <h3>Personal Info</h3>
+            <ul>
+                <li>{{person.fname}} {{person.mname}} {{person.lname}}</li>
+                <li>{{person.gender}}</li>
+                <li>{{person.age}}</li>
+                <li>{{person.dob.day}} {{person.dob.month}} {{person.dob.year}}</li>
+                <li>{{person.grade}}</li>
+                <li>{{person.phone}}</li>
+                <li>{{person.addr.aptNum}} {{person.addr.street}} {{person.addr.city}}, {{person.addr.province}} {{person.addr.country}}</li>
+                <li>{{person.emergName}}</li>
+                <li>{{person.emergNum}}</li>
+            </ul>
+            
+            <h3>Attendance</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Day</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                </tr>
+                <tr ng-repeat="attend in person.attendance">
+                    <td>{{attend.day}}</td>
+                    <td>{{attend.month}}</td>
+                    <td>{{attend.year}}</td>
+                </tr>
+            </table>
+
+            <h3>Outreach</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Day</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                </tr>
+                <tr ng-repeat="outreach in person.outreach">
+                    <td>{{outreach.day}}</td>
+                    <td>{{outreach.month}}</td>
+                    <td>{{outreach.year}}</td>
+                </tr>
+            </table>
+
+            <h3>Notes</h3>
+            <p>Notes</p>
+        </div>
+    </div>
+</div>

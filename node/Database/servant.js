@@ -205,17 +205,7 @@ module.exports = {
 
     // /srvnt?fname=value1&lname=value2&dob=value3
     GetServant : function(db, req){
-        var fname = req.param('fname');
-        var lname = req.param('lname');
-        var year = req.param('year');
-        var month = req.param('month');
-        var day = req.param('day');
-
-        var cursor = db.collection(collec).find({
-            "fname": fname,
-            "lname": lname,
-            "dob":{"year": year, "month": month, "day": day}
-        });
+        var cursor = db.collection(collec).find(req.query);
 
         return cursor;
     },

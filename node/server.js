@@ -61,6 +61,13 @@ app.get('/student', function(req, res){
 	});
 });
 
+app.get('/student/id/:id', function(req, res){
+	var cursor = stdnt.GetStudentById(DB, req);
+	cursor.toArray(function(err, data){
+		res.json(data);
+	});
+});
+
 app.get('/student/class/:cid', function(req, res){
 	var cursor = stdnt.GetStudentByClass(DB, req);
 	cursor.toArray(function(err, data){
