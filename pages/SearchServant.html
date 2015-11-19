@@ -1,19 +1,19 @@
-<div class="container">
+<div class="container" ng-controller="SearchServantCtrl">
     <div>
         <h1>Search Servants</h1>
         <form>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name"/>
+                <input type="text" class="form-control" ng-model="srvnt.fname" placeholder="First Name"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Last Name"/>
+                <input type="text" class="form-control" ng-model="srvnt.lname" placeholder="Last Name"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Middle Name"/>
+                <input type="text" class="form-control" ng-model="srvnt.mname" placeholder="Middle Name"/>
             </div>
             <div class="form-group">
-                <select name="" class="form-control">
-                    <option value="0">Grade</option>
+                <select class="form-control" ng-model="srvnt.grade">
+                    <option value="">--Select Grade--</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -29,47 +29,20 @@
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control">
+                <select class="form-control" ng-model="srvnt.class">
                     <option value="">--Select Class--</option>
                     <option ng-repeat="class in session.classes" value="{{class.name}}">{{class.name}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label class="radio-inline">
-                    <input type="radio" name="gender" value="m"> Male
+                    <input type="radio" name="gender" ng-model="srvnt.gender" value="m"> Male
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" name="gender" value="f"> Female
+                    <input type="radio" name="gender" ng-model="srvnt.gender" value="f"> Female
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" ng-click="search()">Submit</button>
         </form>
-    </div>
-
-     <div id="ViewServant">
-        <div class="col-md-6">
-            <img src="imgs/Unknown-person.gif" class="img-thumbnail">
-        </div>
-        <div class="col=md-6">
-            <h3>Personal Info</h3>
-            <ul>
-                <li>Full Name</li>
-                <li>Gender</li>
-                <li>Age</li>
-                <li>DOB</li>
-                <li>Grade</li>
-                <li>Phone number</li>
-                <li>Address</li>
-            </ul>
-            
-            <h3>Attendance</h3>
-            <table>
-                <tr>
-                    <th>Day</th>
-                    <th>Month</th>
-                    <th>Year</th>
-                </tr>
-            </table>
-        </div>
     </div>
 </div>

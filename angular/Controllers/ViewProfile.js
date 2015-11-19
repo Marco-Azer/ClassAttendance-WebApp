@@ -1,3 +1,3 @@
-app.controller('ViewProfileCtrl', ['$routeParams', '$scope', function($routeParams, $scope){
-	$scope.student = $routeParams;
+app.controller('ViewProfileCtrl', ['$scope', 'Profile', function($scope, Profile){
+	$scope.person = Profile.data;
 }]);

@@ -1,8 +1,4 @@
 app.controller('SearchClassCtrl', ['$scope', '$http', function($scope, $http){
-	$scope.ShowNewClass = true;
-	$scope.ShowClass = false;
-	$scope.ShowClasses = false;
-
 	$scope.searchClass = function(){
 
 		var name = $scope.sclass.name || null;
@@ -30,15 +26,9 @@ app.controller('SearchClassCtrl', ['$scope', '$http', function($scope, $http){
 			function(res){
 				if(res.data.length == 1){
 					$scope.class = res.data[0];
-					$scope.ShowNewClass = false;
-					$scope.ShowClass = true;
-					$scope.ShowClasses = false;
 				}
 				else{
 					$scope.classes = res.data;
-					$scope.ShowNewClass = false;
-					$scope.ShowClasses = true;
-					$scope.ShowClass = false;
 				}
 			},
 			function(res){
