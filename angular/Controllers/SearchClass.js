@@ -1,9 +1,9 @@
-app.controller('SearchClassCtrl', ['$scope', '$http', function($scope, $http){
+app.controller('SearchClassCtrl', ['$scope', '$http', '$location' ,'ClassService', function($scope, $http, $location, ClassService){
 	$scope.searchClass = function(){
 
-		var name = $scope.sclass.name || null;
-		var church = $scope.sclass.church || null;
+		var name = $scope.sclass.cname || null;
 		var grade = $scope.sclass.grade || null;
+		var church = $scope.sclass.church || null;
 		var searchObj = {};
 
 		if(name){
@@ -16,23 +16,18 @@ app.controller('SearchClassCtrl', ['$scope', '$http', function($scope, $http){
 			searchObj.grade = grade;
 		}
 
-		var req = {
-			method: 'GET',
-			url: 'http://localhost:8080/class',
-			params: searchObj
-		}
-		
-		$http(req).then(
-			function(res){
-				if(res.data.length == 1){
-					$scope.class = res.data[0];
+		ClassService.getClass(searchObj, function(err, data){
+			if(err){
+				console.log(err);
+			}
+			else{
+				if(data.length == 1){
+					$location.path('/ViewClass');
 				}
-				else{
-					$scope.classes = res.data;
+				else if(data.length > 1){
+					$location.path('/ViewClasses');
 				}
-			},
-			function(res){
-				console.log('Search was un-successful');
-			});
+			}
+		});
 	}
 }]);

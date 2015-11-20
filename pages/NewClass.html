@@ -5,9 +5,6 @@
             <input class="form-control" type="text" ng-model="new.name" placeholder="Class Name">
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" ng-model="new.church" placeholder="Church Name">
-        </div>
-        <div class="form-group">
             <select class="form-control" ng-model="new.grade">
                 <option value="">--Select Grade--</option>
                 <option value="1">1</option>
@@ -23,6 +20,9 @@
                 <option value="11">11</option>
                 <option value="12">12</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label>{{session.church}}</label>
         </div>
         <fiv class="form-group">
             <button type="submit" class="btn btn-primary" ng-click="addClass()">Add Class</button>

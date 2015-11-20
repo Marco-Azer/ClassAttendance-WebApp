@@ -1,11 +1,8 @@
 <div class="container" ng-controller="SearchClassCtrl">
     <h1>Search Class</h1>
     <form>
-        <div class="form-group">
-            <input class="form-control" type="text" ng-model="sclass.name" placeholder="Class Name">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="text" ng-model="sclass.church" placeholder="Church Name">
+        <div class="form-group" has-success>
+            <input class="form-control" type="text" ng-model="sclass.cname" required placeholder="Class Name">
         </div>
         <div class="form-group">
             <select class="form-control" ng-model="sclass.grade">
@@ -23,6 +20,9 @@
                 <option value="11">11</option>
                 <option value="12">12</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label>{{session.church}}</label>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary" ng-click="searchClass()">Search Class</button>

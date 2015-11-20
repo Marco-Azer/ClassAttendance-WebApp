@@ -89,5 +89,13 @@ module.exports = {
 		var cursor = db.collection(collec).find(searchObj);
 
 		return cursor;
+	},
+
+	GetClassById : function(db, req){
+		var id = req.params.id;
+        var cursor = db.collection(collec).find({
+            "_id" : ObjectID(id)
+        });
+        return cursor;
 	}
 }

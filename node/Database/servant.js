@@ -210,6 +210,14 @@ module.exports = {
         return cursor;
     },
 
+    GetServantById : function(db, req){
+        var id = req.params.id;
+        var cursor = db.collection(collec).find({
+            "_id" : ObjectID(id)
+        });
+        return cursor;
+    },
+
     // /srvntgndr?gender=value1
     GetServantByGender : function(db, req){
         var gender = req.param('gender');

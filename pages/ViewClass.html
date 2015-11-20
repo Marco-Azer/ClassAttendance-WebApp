@@ -1,18 +1,9 @@
-<div ng-show="ShowClasses">
-    <table class="table table-stripped">
-        <tr>
-            <th>Class Name</th>
-            <th>Church</th>
-            <th>Grade</th>
-            <th>Number of Students</th>
-            <th>Number of Servants</th>
-        </tr>
-        <tr ng-repeat = "class in classes">
-            <td>{{class.name}}</td>
-            <td>{{class.church}}</td>
-            <td>{{class.grade}}</td>
-            <td>{{class.stdntNum}}</td>
-            <td>{{class.srvntNum}}</td>
-        </tr>
-    </table>
+<div class="container" ng-controller="ViewClassCtrl">
+    <h1>Class Search Result</h1>
+    <h2>{{class.name}}</h2>
+    <h2>{{class.church}}</h2>
+    <h2>{{class.grade}}</h2>
+    <h2>{{class.stdtNum}}</h2>
+    <h2>{{class.srvntNum}}</h2>
+    <button type="button" class="btn btn-primary">Add Attendance</button>
 </div>

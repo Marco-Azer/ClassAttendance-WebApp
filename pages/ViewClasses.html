@@ -1,24 +1,18 @@
-<div id="AddAttendance" ng-show="ShowAttendance">
+<div class="container"  ng-controller="ViewClassCtrl">
     <table class="table">
         <tr>
-            <th></th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Gender</th>
-            <th>Age</th>
+            <th>Name</th>
+            <th>Church</th>
             <th>Grade</th>
-            <th>Class</th>
-            <th></th>
+            <th>Students</th>
+            <th>Servants</th>
         </tr>
-        <tr ng-repeat="student in students">
-            <td><img src="{{student.picture}}" class="img-thumbnail"></td>
-            <td>{{student.fname}}</td>
-            <td>{{student.lname}}</td>
-            <td>{{student.gender}}</td>
-            <td>{{student.age}}</td>
-            <td>{{student.grade}}</td>
-            <td>{{student.class}}</td>
-            <td><button>Attended</button></td>
+        <tr ng-repeat="class in classes">
+            <td>{{class.name}}</td>
+            <td>{{class.church}}</td>
+            <td>{{class.grade}}</td>
+            <td>{{class.stdtNum}}</td>
+            <td>{{class.srvntNum}}</td>
         </tr>
     </table>
 </div>

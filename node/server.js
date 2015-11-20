@@ -198,6 +198,13 @@ app.get('/servant', function(req, res){
 	});
 });
 
+app.get('/servant/id/:id', function(req, res){
+	var cursor = stdnt.GetServantById(DB, req);
+	cursor.toArray(function(err, data){
+		res.json(data);
+	});
+});
+
 app.get('/servant/grade/:grade', function(req, res){
 	var cursor = srvnt.GetServantByGrade(DB, req);
 	cursor.toArray(function(err, data){
@@ -283,6 +290,9 @@ app.delete('/servant', function(req, res){
 
 /*****************Start Class Insert**************/
 app.post('/class', function(req, res){
+	if(!req.params("name") || !req.params("grade")){
+		res.status(500).send('Not all fields are submited to add new class');
+	}
 	myclass.InsertClass(DB, req.body);
 	res.send();
 });
