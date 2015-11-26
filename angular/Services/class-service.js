@@ -6,7 +6,7 @@ app.factory('ClassService', ['$http', function($http){
 				url : 'http://localhost:8080/class',
 				params : search 
 			};
-			$http(res).then(
+			$http(req).then(
 				function(res){
 					if(res.data.length == 1){
 						retObj.data = res.data[0];
@@ -34,10 +34,10 @@ app.factory('ClassService', ['$http', function($http){
 			$http(req).then(
 				function(res){
 					retObj.data = res.data[0];
-					callback ? callback(null, res.data);
+					callback ? callback(null, res.data) : null;
 				},
 				function(res){
-					callback ? callback("Error");
+					callback ? callback("Error") : null;
 				}
 			);
 		}
