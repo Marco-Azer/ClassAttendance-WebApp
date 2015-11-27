@@ -5,3 +5,7 @@ tr:hover{
 td{
 	cursor: pointer;
 }
+
+ul.dropdown-menu>li:hover{
+	background-color: red;
+}
