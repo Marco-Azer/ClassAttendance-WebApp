@@ -15,6 +15,5 @@
 <li>ExpressJS</li>
 <li>AngularJS</li>
 <li>NodeJS</li>
-<li>
 </ul>
 </ul
